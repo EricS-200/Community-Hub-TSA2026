@@ -1,13 +1,6 @@
 "use client";
 import { useMemo, useState } from "react";
 
-const navLinks = [
-  { label: "Resource Directory", href: "#directory" },
-  { label: "Events", href: "#events" },
-  { label: "Suggestions", href: "#submit" },
-  { label: "About Us", href: "#about" },
-];
-
 const resources = [
   {
     id: 1,
@@ -93,39 +86,8 @@ export default function Home() {
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <header className="relative overflow-hidden bg-linear-to-br from-sky-900 via-sky-800 to-cyan-700 text-white">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center opacity-30" />
-        <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-6 py-10 lg:flex-row lg:items-center lg:gap-16 lg:py-14">
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-full bg-white/20 px-6 py-3 text-sm backdrop-blur">
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90">
-                <span className="text-3xl text-sky-600">🤲</span>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-100">
-                  Hands of the Bluegrass
-                </p>
-                <p className="text-base font-semibold">Serving since 1990</p>
-              </div>
-            </div>
-            <nav className="flex flex-wrap gap-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="rounded-full bg-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/60 hover:text-sky-800"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-            <button
-              type="button"
-              className="hidden rounded-full bg-white px-4 py-2 text-sky-700 font-semibold lg:block"
-            >
-              Member Login
-            </button>
-          </div>
-
-          <div className="space-y-6 py-6 lg:max-w-xl">
+        <div className="relative mx-auto max-w-6xl px-6 py-20">
+          <div className="space-y-6 lg:max-w-2xl">
             <p className="text-sm uppercase tracking-[0.4em] text-sky-100">
               Serving our communities since 1990
             </p>
