@@ -422,12 +422,6 @@ export default function Home() {
           </form>
         </section>
       </main>
-      <footer className="bg-slate-900 py-10 text-center text-sm text-slate-300">
-        <p>
-          © {new Date().getFullYear()} Hands of the Bluegrass. Building a
-          stronger Commonwealth together.
-        </p>
-      </footer>
     </div>
   );
 }
