@@ -3,59 +3,61 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const navLinks = [
-  { href: "/resource-directory", label: "Resource Directory" },
-  { href: "/events", label: "Events" },
-  { href: "/suggestions", label: "Suggestions" },
-  { href: "/about", label: "About Us" },
-];
+import logo from "@/public/global/logo.png";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  const navLinks = [
+    { href: "/about", label: "About Us" },
+    { href: "/resource-directory", label: "Resource Directory" },
+    { href: "/suggestions", label: "Suggestions" },
+    { href: "/references", label: "References" },
+  ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-6 py-4">
+    <header className="pointer-events-none absolute inset-x-0 top-4 z-50 flex justify-center">
+      <div className="pointer-events-auto flex items-center justify-center gap-12 rounded-md bg-white/10 py-2 text-sm text-white ring-1 ring-white/40 backdrop-blur px-12">
         <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/hands-logo.png"
-            alt="Hands of the Bluegrass logo"
-            width={80}
-            height={64}
-            priority
-          />
-          <div className="leading-tight">
-            <p className="text-xs uppercase tracking-[0.4em] text-slate-500">
-              Hands of
-            </p>
-            <p className="text-lg font-semibold text-slate-900">
-              The Bluegrass
-            </p>
+          <div>
+            <Image
+              src={logo}
+              alt="Hands of the Bluegrass logo"
+              width={45}
+              height={45}
+              priority
+              className={isHome ? "invert-0" : ""}
+            />
           </div>
         </Link>
-        <nav className="flex flex-1 items-center justify-center gap-3 overflow-x-auto">
+
+        <nav className="flex flex-1 items-center justify-center gap-16 text-sm font-medium">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`min-w-[160px] rounded-full px-6 py-2 text-center text-sm font-semibold transition ${
-                  isActive
-                    ? "bg-sky-600 text-white shadow-lg shadow-sky-200"
-                    : "bg-sky-400/90 text-white hover:bg-sky-500"
-                }`}
+                className={
+                  isHome
+                    ? `transition ${
+                        isActive
+                          ? "text-white"
+                          : "text-slate-100/90 hover:text-white"
+                      }`
+                    : `transition ${
+                        isActive
+                          ? "text-sky-700"
+                          : "text-slate-700 hover:text-sky-700"
+                      }`
+                }
               >
                 {link.label}
               </Link>
             );
           })}
         </nav>
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br from-sky-500 to-cyan-400 text-white">
-          <span className="text-lg font-semibold">AB</span>
-          <span className="sr-only">Account menu</span>
-        </div>
       </div>
     </header>
   );

@@ -84,40 +84,59 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
-      <header className="relative overflow-hidden bg-linear-to-br from-sky-900 via-sky-800 to-cyan-700 text-white">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center opacity-30" />
-        <div className="relative mx-auto max-w-6xl px-6 py-20">
-          <div className="space-y-6 lg:max-w-2xl">
-            <p className="text-sm uppercase tracking-[0.4em] text-sky-100">
-              Serving our communities since 1990
+      <main className=" flex flex-col gap-20 px-6 pb-16">
+        <section className="relative -mx-6 mb-10 flex h-[100vh] items-center justify-start overflow-hidden bg-slate-900 text-white">
+          <div className="absolute inset-0">
+            <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center" />
+            <div className="absolute inset-0 bg-black/35" />
+          </div>
+          <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 pb-16 pt-32">
+            <div className="space-y-4 max-w-xl">
+              <p className="text-sm uppercase tracking-[0.4em] text-slate-100">
+                Explore the vibrant culture of Lexington, KY
+              </p>
+              <h1 className="text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+                Hands of the{" "}
+                <span className="text-sky-300">
+                  Blue
+                  <span className="text-white">grass</span>
+                </span>
+              </h1>
+            </div>
+            <p className="max-w-xl text-lg text-slate-100">
+              A student-built community hub connecting neighbors with local
+              resources, events, and organizations across the Bluegrass.
             </p>
-            <h1 className="text-4xl font-black uppercase leading-tight text-white sm:text-5xl lg:text-6xl">
-              Hands of the Bluegrass
-            </h1>
-            <p className="text-lg text-slate-100">
-              We amplify resources that help Kentucky families thrive. Explore
-              the resource hub, meet partners making a difference, and share new
-              opportunities with our team.
-            </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="mt-6 flex flex-wrap gap-4">
               <a
                 href="#directory"
-                className="rounded-full bg-white px-6 py-3 font-semibold text-sky-700 transition hover:bg-slate-100"
+                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
               >
-                Explore Resources
+                Browse resource directory
               </a>
               <a
                 href="#submit"
-                className="rounded-full border border-white/60 px-6 py-3 font-semibold text-white transition hover:bg-white/20"
+                className="rounded-full border border-white/70 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
               >
-                Share a Resource
+                Share a new resource
               </a>
             </div>
+            <div className="mt-16 flex flex-col items-center gap-4">
+              <div className="flex gap-6 text-3xl">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <span key={index} aria-hidden>
+                    ☆
+                  </span>
+                ))}
+              </div>
+              <p className="text-sm text-slate-100">
+                Monthly spotlight of events
+              </p>
+            </div>
           </div>
-        </div>
-      </header>
+        </section>
 
-      <main className="mx-auto flex max-w-6xl flex-col gap-20 px-6 py-16">
+        {/* Existing homepage sections */}
         <section
           id="about"
           className="grid gap-10 rounded-3xl bg-white p-8 shadow-xl md:grid-cols-[3fr_2fr]"
