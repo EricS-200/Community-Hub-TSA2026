@@ -39,19 +39,9 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={
-                  isHome
-                    ? `transition ${
-                        isActive
-                          ? "text-white"
-                          : "text-slate-100/90 hover:text-white"
-                      }`
-                    : `transition ${
-                        isActive
-                          ? "text-sky-700"
-                          : "text-slate-700 hover:text-sky-700"
-                      }`
-                }
+                className={`transition ${
+                  isActive ? "text-white" : "text-slate-100/90 hover:text-white"
+                }`}
               >
                 {link.label}
               </Link>

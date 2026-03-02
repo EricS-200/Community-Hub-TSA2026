@@ -1,6 +1,9 @@
 "use client";
 import { useMemo, useState } from "react";
 
+import Image from "next/image";
+import heroImage from "../public/home/hero.png";
+
 const resources = [
   {
     id: 1,
@@ -87,7 +90,15 @@ export default function Home() {
       <main className=" flex flex-col gap-20 px-6 pb-16">
         <section className="relative -mx-6 mb-10 flex h-[100vh] items-center justify-start overflow-hidden bg-slate-900 text-white">
           <div className="absolute inset-0">
-            <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center" />
+            <Image
+              src={heroImage}
+              alt=""
+              fill
+              priority
+              placeholder="blur"
+              sizes="100vw"
+              className="object-cover object-center"
+            />
             <div className="absolute inset-0 bg-black/35" />
           </div>
           <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 pb-16 pt-32">
