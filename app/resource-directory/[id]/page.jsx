@@ -90,14 +90,14 @@ export default async function ResourceDetailPage({ params }) {
               >
                 Back to directory
               </Link>
-              <a
-                href={detailUrl}
+              <Link
+                href={resource.link || "https://www.google.com"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full border border-white/70 px-5 py-2 text-sm font-medium text-white/90 transition hover:bg-white/10"
               >
                 Open in new tab
-              </a>
+              </Link>
             </div>
           </div>
         </section>

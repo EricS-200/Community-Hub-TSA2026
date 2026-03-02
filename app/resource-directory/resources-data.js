@@ -24,6 +24,7 @@ export const RESOURCES = [
     details:
       "Weekly community meal discount program partnering with local restaurants to provide budget-friendly dinners for families.",
     image: img1,
+    link: "https://www.example.com",
   },
   {
     id: 2,
