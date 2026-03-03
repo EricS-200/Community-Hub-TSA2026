@@ -3,6 +3,8 @@
 import Image from "next/image";
 import heroImage from "../../public/references/hero.png";
 
+import Citation from "@/components/Citation";
+
 export default function ReferencesHero() {
   const handleScrollDown = () => {
     if (typeof window === "undefined") return;
@@ -47,4 +49,3 @@ export default function ReferencesHero() {
     </main>
   );
 }
-
