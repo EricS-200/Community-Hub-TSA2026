@@ -25,7 +25,6 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-slate-50 antialiased`}
       >
-        <NavbarShell />
         {children}
         <Footer />
       </body>

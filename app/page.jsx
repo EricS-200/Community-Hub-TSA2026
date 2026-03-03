@@ -1,136 +1,113 @@
 "use client";
-import { useMemo, useState } from "react";
+"use strict"
 
-import Image from "next/image";
-import heroImage from "../public/home/hero.png";
+import React, { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
+import { motion, useMotionValue, useTransform, animate, useAnimationFrame } from 'framer-motion';
 
-const resources = [
-  {
-    id: 1,
-    name: "Food Wellness Collective",
-    category: "Food",
-    description: "Weekly grocery pick-ups and nutrition classes.",
-    location: "Lexington",
-    icon: "🥬",
-  },
-  {
-    id: 2,
-    name: "Meal Monday",
-    category: "Food",
-    description: "Free hot meals every Monday evening.",
-    location: "Richmond",
-    icon: "🍲",
-  },
-  {
-    id: 3,
-    name: "Thrift Sale and Share",
-    category: "Housing",
-    description: "Voucher-based thrift program for households in transition.",
-    location: "Frankfort",
-    icon: "🛍️",
-  },
-  {
-    id: 4,
-    name: "Heartily Family Support",
-    category: "Counseling",
-    description: "Trauma-informed counseling with onsite childcare.",
-    location: "Nicholasville",
-    icon: "💬",
-  },
-  {
-    id: 5,
-    name: "Bluegrass STEM Club",
-    category: "Education",
-    description: "After-school programming for grades 4-12.",
-    location: "Lexington",
-    icon: "🧪",
-  },
-  {
-    id: 6,
-    name: "Transit Together",
-    category: "Transportation",
-    description: "Ride-share stipends for medical appointments.",
-    location: "Georgetown",
-    icon: "🚌",
-  },
+// --- CONFIGURATION CONSTANTS ---
+const RADIUS = 1100;
+const Y_OFFSET = 1000;
+const SPACING = 35; // Increased slightly for larger card width
+const CARD_WIDTH = 352;  // 10% larger (previously 320)
+const CARD_HEIGHT = 495; // 10% larger (previously 450)
+
+const resourceData = [
+  { title: "Library Help", location: "Library Lane Ct.", desc: "Reach out and help the local library with organizing new books", color: "bg-[#2d4352]" },
+  { title: "Tennis Tuesday", location: "@ Shilito Park", desc: "Compete with our community through tennis action", color: "bg-[#2d4352]" },
+  { title: "Meal more.", location: "@ 2116 Ridgecane ct", desc: "Come join us for a wonderful added with an amazing 30% discount", color: "bg-[#2d4352]" },
+  { title: "Park Clean", location: "@ Central", desc: "Keep the bluegrass green by joining our monthly cleanup.", color: "bg-[#2d4352]" },
+  { title: "Art Walk", location: "@ Downtown", desc: "Experience the local galleries and creative community.", color: "bg-[#2d4352]" },
+  { title: "Pet Adoption", location: "@ Shelter", desc: "Find your new best friend this weekend at the hub.", color: "bg-[#2d4352]" },
 ];
 
-const highlightPartners = [
-  { name: "Keithston Foundation", icon: "/file.svg" },
-  { name: "Heartily Care", icon: "/window.svg" },
-  { name: "Rimberio Community", icon: "/globe.svg" },
-  { name: "Frenzy’s Creative", icon: "/next.svg" },
-];
+// --- HELPER COMPONENTS ---
 
-const stats = [
-  { label: "Pounds of Food Donated", value: "3,000,000" },
-  { label: "Families Received Direct Help", value: "400,000" },
-  { label: "Growth in Local Partnerships", value: "178%" },
-];
+const StarIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10 text-white opacity-80">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+  </svg>
+);
 
-const categories = ["All", ...new Set(resources.map((item) => item.category))];
+const Card = ({ data, index, rotationValue, total }) => {
+  // Mapping horizontal drag value to circular coordinates
+  const angle = useTransform(rotationValue, (v) => {
+    const startAngle = index * SPACING;
+    const currentAngle = startAngle + v;
+    const totalRange = total * SPACING;
 
-export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [query, setQuery] = useState("");
+    // Infinite wrap logic
+    let wrapped = ((currentAngle + totalRange / 2) % totalRange);
+    if (wrapped < 0) wrapped += totalRange;
+    return wrapped - totalRange / 2;
+  });
 
-  const filteredResources = useMemo(() => {
-    return resources.filter((resource) => {
-      const matchesCategory =
-        selectedCategory === "All" || resource.category === selectedCategory;
-      const matchesQuery = resource.name
-        .toLowerCase()
-        .includes(query.toLowerCase());
-      return matchesCategory && matchesQuery;
-    });
-  }, [selectedCategory, query]);
+  // Calculate position along the arc
+  // x = R * sin(theta)
+  // y = -R * cos(theta) + Offset
+  const x = useTransform(angle, (a) => Math.sin((a * Math.PI) / 180) * RADIUS);
+  const y = useTransform(angle, (a) => -Math.cos((a * Math.PI) / 180) * RADIUS + Y_OFFSET);
+  const rotate = useTransform(angle, (a) => a);
+
+  // Fade out cards as they approach the screen edges
+  const opacity = useTransform(angle, [-60, -45, 0, 45, 60], [0, 1, 1, 1, 0]);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
-      <main className=" flex flex-col gap-20 px-6 pb-16">
-        <section className="relative -mx-6 mb-10 flex h-[100vh] items-center justify-start overflow-hidden bg-slate-900 text-white">
-          <div className="absolute inset-0">
-            <Image
-              src={heroImage}
-              alt=""
-              fill
-              priority
-              placeholder="blur"
-              sizes="100vw"
-              className="object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-black/35" />
-          </div>
-          <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 pb-16 pt-32">
-            <div className="space-y-4 max-w-xl">
-              <p className="text-sm uppercase tracking-[0.4em] text-slate-100">
-                Explore the vibrant culture of Lexington, KY
-              </p>
-              <h1 className="text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
-                Hands of the{" "}
-                <span className="text-sky-300">
-                  Blue
-                  <span className="text-white">grass</span>
-                </span>
-              </h1>
-            </div>
-            <p className="max-w-xl text-lg text-slate-100">
-              A student-built community hub connecting neighbors with local
-              resources, events, and organizations across the Bluegrass.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-4">
-              <a
-                href="#directory"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
-              >
-                Browse resource directory
-              </a>
-              <a
-                href="#submit"
-                className="rounded-full border border-white/70 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                Share a new resource
-              </a>
+    <motion.div
+      style={{ x, y, rotate, opacity, width: CARD_WIDTH, height: CARD_HEIGHT }}
+      className={`absolute ${data.color} rounded-[2.5rem] p-10 shadow-2xl border border-white/10 flex flex-col pointer-events-none select-none z-10`}
+    >
+      <span className="text-[11px] bg-white/20 px-4 py-1.5 rounded-full mb-8 self-center italic font-light tracking-widest uppercase">
+        {data.location}
+      </span>
+      <h3 className="text-4xl font-light text-center mb-6 leading-tight tracking-tight">
+        {data.title}
+      </h3>
+      <p className="text-sm opacity-60 text-center mb-10 leading-relaxed px-6 font-light">
+        {data.desc}
+      </p>
+      <div className="mt-auto relative flex-1 bg-black/20 rounded-3xl overflow-hidden flex items-center justify-center border border-white/5">
+        <Image src="/vercel.svg" alt="placeholder" width={110} height={110} className="invert opacity-20" />
+      </div>
+    </motion.div>
+  );
+};
+
+// --- MAIN PAGE COMPONENT ---
+
+export default function BluegrassLandingPage() {
+  const rotationValue = useMotionValue(0);
+  const [isInteracting, setIsInteracting] = useState(false);
+
+  // Default low-velocity drift
+  useAnimationFrame((time, delta) => {
+    if (!isInteracting) {
+      const moveBy = (delta / 1000) * -4.5; // Slightly faster drift for larger cards
+      rotationValue.set(rotationValue.get() + moveBy);
+    }
+  });
+
+  const handleDrag = (event, info) => {
+    const sensitivity = 0.08;
+    rotationValue.set(rotationValue.get() + info.delta.x * sensitivity);
+  };
+
+  return (
+    <main className="w-full font-sans text-white bg-[#39586a] selection:bg-blue-400">
+
+      {/* 1. HERO SECTION (Full Viewport) */}
+      <section className="relative h-screen flex flex-col justify-end pb-20 px-10 md:px-20 overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-black">
+          <Image src="/vercel.svg" alt="Hero Background" fill className="object-cover opacity-10 grayscale invert" />
+        </div>
+        <div className="max-w-7xl mx-auto w-full">
+          <h1 className="text-8xl md:text-[10rem] font-extralight leading-[0.85] mb-6 tracking-tighter">
+            Hands of the <br /> <span className="">Blue</span>grass
+          </h1>
+          <p className="text-xl md:text-2xl font-light tracking-[0.1em] mb-16 opacity-70">Explore Lexington, Kentucky</p>
+          <div className="w-full border-t border-white/20 pt-10">
+            <div className="flex justify-around items-center opacity-40">
+              <StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon />
             </div>
             <div className="mt-16 flex flex-col items-center gap-4">
               <div className="flex gap-6 text-3xl">
@@ -145,313 +122,83 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Existing homepage sections */}
-        <section
-          id="about"
-          className="grid gap-10 rounded-3xl bg-white p-8 shadow-xl md:grid-cols-[3fr_2fr]"
-        >
-          <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-sky-700">
-              About Us
-            </p>
-            <h2 className="text-3xl font-bold text-slate-900">
-              Rooted in the heart of Kentucky
-            </h2>
-            <p className="text-lg text-slate-600">
-              Hands of the Bluegrass connects neighbors with the nonprofit,
-              faith-based, and civic partners ready to meet urgent needs. Our
-              volunteer-led help desk and digital resource hub ensure support is
-              easy to find, compassionate to navigate, and centered on dignity.
-            </p>
-            <p className="text-lg text-slate-600">
-              Together, we coordinate drives, spotlight local impact, and keep
-              data informed so leaders can invest where it matters most.
-            </p>
-            <button className="rounded-full bg-sky-600 px-6 py-3 font-semibold text-white transition hover:bg-sky-500">
-              Learn More
+      {/* 2. ABOUT US SECTION (Enlarged Box) */}
+      <section className="h-screen bg-[#39586a] flex items-center justify-center px-10">
+        <div className="max-w-[1500px] w-full h-[80vh] grid grid-cols-1 lg:grid-cols-2 items-center border border-white/10 rounded-lg p-12 md:p-24 bg-[#324c5c] backdrop-blur-lg relative overflow-hidden">
+          <div className="z-10">
+            <h2 className="text-8xl font-extralight mb-12 tracking-tighter">About us</h2>
+            <div className="space-y-10 text-2xl font-extralight leading-relaxed max-w-2xl opacity-80">
+              <p>Hands of the Bluegrass was created to lift our community, one neighbor at a time.</p>
+              <p>Rooted in the heart of Kentucky, we bring together resources, support, and people who care — because when we reach out our hands, the Bluegrass grows stronger.</p>
+            </div>
+            <button className="mt-14 border border-white/30 hover:bg-white hover:text-black px-12 py-4 text-xs font-bold tracking-[0.3em] transition-all">
+              LEARN MORE
             </button>
           </div>
-          <div className="relative h-72 overflow-hidden rounded-[3rem] bg-linear-to-br from-sky-200 to-blue-300">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=900&auto=format&fit=crop')] bg-cover bg-center" />
-            <div className="absolute right-6 top-10 h-24 w-24 rotate-12 rounded-2xl border-4 border-white bg-white/70 backdrop-blur" />
-            <div className="absolute bottom-8 left-4 flex items-center gap-3 rounded-2xl bg-white/80 px-4 py-3 font-semibold text-slate-800 backdrop-blur">
-              <span className="text-3xl">💙</span> 2,400 volunteers strong
-            </div>
+          <div className="relative h-full hidden lg:flex items-center justify-center pointer-events-none opacity-20">
+            <Image src="/vercel.svg" alt="Horse Icon" width={700} height={700} className="invert transform scale-125 rotate-6" />
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="space-y-8 rounded-3xl bg-slate-900 px-8 py-10 text-white">
-          <p className="text-center text-sm font-semibold uppercase tracking-[0.4em] text-sky-200">
-            Monthly Spotlight
-          </p>
-          <h2 className="text-center text-3xl font-bold">
-            Partners amplifying hope this month
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {highlightPartners.map((partner) => (
-              <div
-                key={partner.name}
-                className="flex flex-col items-center gap-4 rounded-2xl bg-white/10 px-6 py-8 text-center backdrop-blur transition hover:bg-white/20"
-              >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/20">
-                  <span className="text-3xl" role="img" aria-hidden>
-                    🤝
-                  </span>
-                </div>
-                <p className="text-lg font-semibold">{partner.name}</p>
-                <p className="text-sm text-slate-200">
-                  Coordinating drives, tutoring, creative arts, and more.
-                </p>
-              </div>
-            ))}
+      {/* 3. RESOURCE HUB SECTION (Infinite Arc Carousel) */}
+      <section className="min-h-[100vh] flex flex-col items-center pt-24 relative select-none">
+
+        <div className="z-20 mb-[20vh]">
+          <div className="px-16 py-6 border border-white/20 rounded-full bg-white/5 backdrop-blur-2xl shadow-xl">
+            <h2 className="text-6xl font-extralight tracking-tight">Resource hub</h2>
           </div>
-        </section>
+        </div>
 
-        <section
-          id="directory"
-          className="space-y-8 rounded-3xl bg-white p-8 shadow-lg"
+        {/* Interaction Surface */}
+        <motion.div
+          className="relative w-full h-[75vh] flex justify-center items-start cursor-grab active:cursor-grabbing"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0}
+          onDragStart={() => setIsInteracting(true)}
+          onDragEnd={() => setIsInteracting(false)}
+          onDrag={handleDrag}
         >
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-sky-700">
-                Resource Directory
-              </p>
-              <h2 className="text-3xl font-bold text-slate-900">
-                Search and filter community resources
-              </h2>
-            </div>
-            <button className="self-start rounded-full border border-slate-200 px-5 py-2 text-sm font-semibold text-slate-600 hover:border-slate-400">
-              Show More
-            </button>
-          </div>
-          <div className="flex flex-col gap-4 md:flex-row">
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                    selectedCategory === category
-                      ? "bg-sky-600 text-white"
-                      : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-            <div className="flex-1">
-              <label className="sr-only" htmlFor="resource-search">
-                Search resources
-              </label>
-              <input
-                id="resource-search"
-                type="search"
-                placeholder="Search by name..."
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                className="w-full rounded-full border border-slate-200 px-4 py-3 text-sm focus:border-sky-500 focus:outline-none"
-              />
-            </div>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filteredResources.map((resource) => (
-              <article
-                key={resource.id}
-                className="space-y-3 rounded-2xl border border-slate-100 bg-slate-50 p-5 transition hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="text-3xl">{resource.icon}</div>
-                  <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-500">
-                    {resource.category}
-                  </span>
-                </div>
-                <h3 className="text-lg font-semibold text-slate-900">
-                  {resource.name}
-                </h3>
-                <p className="text-sm text-slate-600">{resource.description}</p>
-                <p className="text-sm font-semibold text-slate-700">
-                  {resource.location}
-                </p>
-              </article>
-            ))}
-            {filteredResources.length === 0 && (
-              <p className="text-center text-slate-500">
-                No resources match your search yet. Try another keyword.
-              </p>
-            )}
-          </div>
-        </section>
+          {/* THE WHITE ARC
+              To bisect the center of the cards:
+              The cards sit at y = -RADIUS + Y_OFFSET + (angle logic).
+              For angle=0 (top of arc), center is exactly at Y_OFFSET - RADIUS + (CARD_HEIGHT/2).
+          */}
+          <div
+            className="absolute border-t-[1.5px] border-white/30 rounded-[100%] pointer-events-none z-0"
+            style={{
+              width: RADIUS * 2,
+              height: RADIUS * 2,
+              // Math to place circle's top border exactly at horizontal center of top-most card
+              top: `${Y_OFFSET - RADIUS + (CARD_HEIGHT / 2)}px`,
+              left: '50%',
+              transform: 'translateX(-50%)'
+            }}
+          />
 
-        <section className="grid items-center gap-8 rounded-3xl bg-slate-100 p-8 md:grid-cols-[1.2fr_1fr]">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-slate-500">
-              Across the Bluegrass
-            </p>
-            <h2 className="text-3xl font-bold text-slate-900">
-              Stories of progress across the Commonwealth
-            </h2>
-            <p className="mt-4 text-slate-600">
-              Our map tracks deliveries, clinics, cultural events, and STEM
-              programs as they pop up in counties statewide. Tap in to see where
-              resources are growing and how you can help.
-            </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <div key={stat.label} className="rounded-2xl bg-white p-4">
-                  <p className="text-2xl font-bold text-sky-700">
-                    {stat.value}
-                  </p>
-                  <p className="text-sm text-slate-600">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="relative h-80 rounded-3xl bg-linear-to-br from-sky-600 to-blue-500 p-6 text-white">
-            <p className="text-lg font-semibold">Bluegrass Impact Map</p>
-            <div className="mt-6 flex h-56 items-center justify-center rounded-2xl bg-white/10">
-              <p className="text-center text-sm text-slate-100">
-                Interactive county markers coming soon. Keep checking back for
-                updated data drops.
-              </p>
-            </div>
-          </div>
-        </section>
+          {/* Render Cards */}
+          {resourceData.map((data, i) => (
+            <Card
+              key={i}
+              data={data}
+              index={i}
+              total={resourceData.length}
+              rotationValue={rotationValue}
+            />
+          ))}
+        </motion.div>
+        
+        <div className="absolute bottom-16 z-20">
+          <button className="bg-white text-black px-16 py-4 text-xs font-bold tracking-[0.4em] hover:scale-105 transition-transform shadow-xl">
+            EXPLORE MORE
+          </button>
+        </div>
+      </section>
 
-        <section
-          id="submit"
-          className="rounded-3xl bg-white px-6 py-10 shadow-lg sm:px-10"
-        >
-          <div className="mx-auto max-w-3xl space-y-6 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-slate-500">
-              Submit a Resource
-            </p>
-            <h2 className="text-3xl font-bold text-slate-900">
-              Share a program or partner we should highlight
-            </h2>
-            <p className="text-slate-600">
-              Have a non-profit, community event, or campus initiative that
-              neighbors should know about? Add it below so our team can verify
-              and publish it in the hub.
-            </p>
-          </div>
-          <form className="mx-auto mt-10 grid max-w-4xl gap-6">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
-                <label className="text-sm font-semibold text-slate-600">
-                  Resource Name *
-                </label>
-                <input
-                  type="text"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:border-sky-500 focus:outline-none"
-                  placeholder="Community Food Pantry"
-                  required
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-slate-600">
-                  Category *
-                </label>
-                <select
-                  className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 focus:border-sky-500 focus:outline-none"
-                  required
-                >
-                  <option>Food</option>
-                  <option>Housing</option>
-                  <option>Health</option>
-                  <option>Education</option>
-                  <option>Transportation</option>
-                  <option>Other</option>
-                </select>
-              </div>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
-                <label className="text-sm font-semibold text-slate-600">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:border-sky-500 focus:outline-none"
-                  placeholder="(555) 123-4567"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-slate-600">
-                  Website
-                </label>
-                <input
-                  type="url"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:border-sky-500 focus:outline-none"
-                  placeholder="https://example.org"
-                />
-              </div>
-            </div>
-            <div>
-              <label className="text-sm font-semibold text-slate-600">
-                Description *
-              </label>
-              <textarea
-                rows={4}
-                className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:border-sky-500 focus:outline-none"
-                placeholder="Describe the services and who they support..."
-                required
-              />
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
-                <label className="text-sm font-semibold text-slate-600">
-                  Address
-                </label>
-                <input
-                  type="text"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:border-sky-500 focus:outline-none"
-                  placeholder="123 Main St, City, KY"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-slate-600">
-                  Hours of Operation
-                </label>
-                <input
-                  type="text"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:border-sky-500 focus:outline-none"
-                  placeholder="Mon–Fri: 9 AM - 5 PM"
-                />
-              </div>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
-                <label className="text-sm font-semibold text-slate-600">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:border-sky-500 focus:outline-none"
-                  placeholder="John Doe"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-slate-600">
-                  Your Email *
-                </label>
-                <input
-                  type="email"
-                  className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 focus:border-sky-500 focus:outline-none"
-                  placeholder="john@example.com"
-                  required
-                />
-              </div>
-            </div>
-            <button className="mt-4 flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3 font-semibold text-white transition hover:bg-emerald-500">
-              Submit Resource
-              <span aria-hidden>✈️</span>
-            </button>
-          </form>
-        </section>
-      </main>
-    </div>
+    </main>
   );
 }
