@@ -100,28 +100,11 @@ export default function BluegrassLandingPage() {
         <div className="absolute inset-0 -z-10 bg-black">
           <Image src="/vercel.svg" alt="Hero Background" fill className="object-cover opacity-10 grayscale invert" />
         </div>
-        <div className="max-w-7xl mx-auto w-full">
-          <h1 className="text-8xl md:text-[10rem] font-extralight leading-[0.85] mb-6 tracking-tighter">
-            Hands of the <br /> <span className="">Blue</span>grass
+        <div className="max-w-7xl w-full">
+          <h1 className="text-8xl md:text-[10rem] font-extralight leading-[0.85] mb-6 pr-[100px] tracking-tighter">
+            Hands of the <br /> Bluegrass
           </h1>
-          <p className="text-xl md:text-2xl font-light tracking-[0.1em] mb-16 opacity-70">Explore Lexington, Kentucky</p>
-          <div className="w-full border-t border-white/20 pt-10">
-            <div className="flex justify-around items-center opacity-40">
-              <StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon />
-            </div>
-            <div className="mt-16 flex flex-col items-center gap-4">
-              <div className="flex gap-6 text-3xl">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <span key={index} aria-hidden>
-                    ☆
-                  </span>
-                ))}
-              </div>
-              <p className="text-sm text-slate-100">
-                Monthly spotlight of events
-              </p>
-            </div>
-          </div>
+          <p className="text-xl md:text-2xl font-light tracking-[0.1em] pl-[10px] mb-16 opacity-70">Explore Lexington, Kentucky</p>
         </div>
       </section>
 
@@ -145,7 +128,7 @@ export default function BluegrassLandingPage() {
       </section>
 
       {/* 3. RESOURCE HUB SECTION (Infinite Arc Carousel) */}
-      <section className="min-h-[100vh] flex flex-col items-center pt-24 relative select-none">
+      <section className="min-h-[100vh] flex flex-col items-center pt-24 relative select-none overflow-hidden">
 
         <div className="z-20 mb-[20vh]">
           <div className="px-16 py-6 border border-white/20 rounded-full bg-white/5 backdrop-blur-2xl shadow-xl">
