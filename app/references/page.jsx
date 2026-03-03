@@ -16,7 +16,7 @@ export default function ReferencesPage() {
             <div className="rounded-lg border border-[#2d4554] bg-[#2d4554]/40 p-5 flex flex-col min-h-[420px]">
               <h2 className="text-xl font-semibold mb-4">
                 <a
-                  href="/references/work-log.pdf"
+                  href="/references/copyright-checklist.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:underline focus:outline-none focus:underline"
@@ -26,7 +26,7 @@ export default function ReferencesPage() {
               </h2>
               <div className="flex-1 min-h-0 rounded overflow-hidden bg-[#1a2a38]/60">
                 <iframe
-                  src="/references/work-log.pdf"
+                  src="/references/copyright-checklist.pdf"
                   title="Copyright Checklist PDF"
                   className="w-full h-full min-h-[340px]"
                 />
@@ -35,7 +35,7 @@ export default function ReferencesPage() {
             <div className="rounded-lg border border-[#2d4554] bg-[#2d4554]/40 p-5 flex flex-col min-h-[420px]">
               <h2 className="text-xl font-semibold mb-4">
                 <a
-                  href="/references/copyright-checklist.pdf"
+                  href="/references/work-log.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:underline focus:outline-none focus:underline"
@@ -45,7 +45,7 @@ export default function ReferencesPage() {
               </h2>
               <div className="flex-1 min-h-0 rounded overflow-hidden bg-[#1a2a38]/60">
                 <iframe
-                  src="/references/copyright-checklist.pdf"
+                  src="/references/work-log.pdf"
                   title="Work Log PDF"
                   className="w-full h-full min-h-[340px]"
                 />
