@@ -69,7 +69,10 @@ export default function ReferencesPage() {
 
           {/* Image Citations */}
           <div className="rounded-lg border border-[#2d4554] bg-[#2d4554]/40 p-5">
-            <h2 className="text-xl font-semibold mb-4">Image Citations</h2>
+            <h2 className="text-xl font-semibold">Image Citations</h2>
+            <p className="text-lg mt-2">
+              All other media not cited below was created by our team.
+            </p>
             <div className="pt-2">
               <ol className="space-y-2 list-decimal list-inside">
                 <li>
@@ -518,7 +521,10 @@ export default function ReferencesPage() {
           </div>
 
           <div className="rounded-lg border border-[#2d4554] bg-[#2d4554]/40 p-5">
-            <h2 className="text-xl font-semibold mb-4">Content Citations</h2>
+            <h2 className="text-xl font-semibold">Content Citations</h2>
+            <p className="text-lg mt-2">
+              All content not cited below was invented by our team.
+            </p>
             <div className="pt-2">
               <ol className="space-y-2 list-decimal list-inside">
                 <li>
