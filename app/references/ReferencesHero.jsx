@@ -3,8 +3,6 @@
 import Image from "next/image";
 import heroImage from "../../public/references/hero.png";
 
-import Citation from "@/components/Citation";
-
 export default function ReferencesHero() {
   const handleScrollDown = () => {
     if (typeof window === "undefined") return;
@@ -44,45 +42,6 @@ export default function ReferencesHero() {
           >
             Scroll down
           </button>
-        </div>
-      </section>
-
-      <section className={"bg-[#39586a] pt-[5%] h-screen"}>
-        <div className={"flex justify-center items-center"}>
-          <h1 className={"text-2xl"}>
-            Image Citations
-          </h1>
-        </div>
-        <div className={"flex justify-center items-start mt-10"}>
-          <ol>
-            <li>
-              <Citation
-                author="Farmhouse Sunflower "
-                authorLink=""
-                type="image"
-                source="Farmhouse Sunflower"
-                sourceLink="https://farmhousesunflower.wordpress.com/"
-              />
-            </li>
-            <li>
-              <Citation
-                author="Farmhouse Sunflower "
-                authorLink=""
-                type="image"
-                source="Farmhouse Sunflower"
-                sourceLink="https://farmhousesunflower.wordpress.com/"
-              />
-            </li>
-            <li>
-              <Citation
-                author="Cassie Smallwood"
-                authorLink="https://www.cassiesmallwood.com/"
-                type="image"
-                source="Cassie Smallwood"
-                sourceLink="https://www.cassiesmallwood.com/fruit-coloring-sheets/"
-              />
-            </li>
-          </ol>
         </div>
       </section>
     </main>
