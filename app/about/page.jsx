@@ -1,13 +1,17 @@
-"use strict";
+"use client";
 
 import React from "react";
 import Image from "next/image";
-
-export const metadata = {
-  title: "About Us | Hands of the Bluegrass",
-};
+import heroImage from "../../public/about/josh-hild-YwpFllVSpvU-unsplash.jpg";
 
 export default function AboutUsPage() {
+  const handleScrollDown = () => {
+    if (typeof window === "undefined") return;
+
+    const offset = window.innerHeight;
+    window.scrollTo({ top: offset, behavior: "smooth" });
+  };
+
   const sections = [
     {
       id: "who-we-are",
@@ -59,27 +63,37 @@ export default function AboutUsPage() {
   return (
     <main className="text-white font-sans">
       {/* Hero Section */}
-      <section className="relative h-screen w-full flex flex-col justify-end pb-20 px-10 overflow-hidden">
-        {/* Placeholder for the background image of hands */}
-        <div className="absolute inset-0 -z-10 bg-[#1a2a38]">
+      <section className="relative h-screen w-full overflow-hidden">
+        <div className="absolute inset-0">
           <Image
-            src="/about/josh-hild-YwpFllVSpvU-unsplash.jpg"
-            alt="Hero Background"
+            src={heroImage}
+            alt="Hands gathered around a small plant"
             fill
-            className="object-cover opacity-60"
+            priority
+            placeholder="blur"
+            className="object-cover"
           />
+          <div className="absolute inset-0 bg-black/35" />
         </div>
 
-        <div className="max-w-7xl mx-auto w-full">
-          <h1 className="text-7xl md:text-8xl font-light mb-4">About us</h1>
-          <p className="text-xl md:text-2xl font-light opacity-90">
-            For the goal to unite everyone
-          </p>
-        </div>
+        <div className="relative flex h-full w-full flex-col justify-between px-10 pb-12 pt-28 md:px-20 md:pb-16 md:pt-32">
+          <div className="max-w-xl space-y-4 absolute bottom-[0%] left-[0%] ml-10 mb-24">
+            <h1 className="text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl lg:text-8xl">
+              About Us
+            </h1>
+            <p className="text-md uppercase tracking-[0.9em]  text-slate-100 ml-1">
+              With the hope to unite the Bluegrass Community
+            </p>
+          </div>
 
-        <button className="absolute bottom-10 right-10 bg-white text-black px-6 py-2 rounded-md font-medium hover:bg-gray-200 transition-colors">
-          Scroll down
-        </button>
+          <button
+            type="button"
+            onClick={handleScrollDown}
+            className="absolute bottom-[0%] right-[0%] mb-24 mr-20 ml-auto rounded bg-white/90 px-6 py-3 text-sm font-medium text-slate-900 shadow-md transition hover:bg-white hover:cursor-grab"
+          >
+            Scroll down
+          </button>
+        </div>
       </section>
 
       {/* Alternating Content Sections */}
@@ -123,4 +137,3 @@ export default function AboutUsPage() {
     </main>
   );
 }
-
