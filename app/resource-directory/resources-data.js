@@ -20,152 +20,312 @@ export const RESOURCES = [
     slug: "meal-discount-monday",
     title: "Meal Discount Monday",
     category: "Food",
-    address: "1600 Man O' War Blvd.",
+    address: "1600 Man O’ War Blvd.",
     details:
       "Weekly community meal discount program partnering with local restaurants to provide budget-friendly dinners for families.",
     image: img1,
-    link: "https://www.example.com",
+    link: "https://www.example.com/",
   },
+
   {
     id: 2,
     slug: "open-badminton-practice",
     title: "Open Badminton Practice",
-    category: "Sport",
-    address: "1600 Man O' War Blvd.",
+    category: "Sports",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "Drop-in badminton practice for all ages and skill levels. Equipment is provided, and no registration is required.",
+      "Drop-in badminton practice sessions for all skill levels with equipment provided on site.",
     image: img2,
+    link: "https://www.example.com/",
   },
+
   {
     id: 3,
     slug: "public-tutoring",
     title: "Public Tutoring",
     category: "Education",
-    address: "1600 Man O' War Blvd.",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "After-school tutoring in math, reading, and science for grades 4–12 led by volunteer educators and university students.",
+      "Free after-school tutoring in core subjects for students needing extra academic support.",
     image: img3,
+    link: "https://www.example.com/",
   },
+
   {
     id: 4,
     slug: "new-restaurant-opening",
     title: "New Restaurant Opening",
     category: "Food",
-    address: "1600 Man O' War Blvd.",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "Local restaurant soft opening with community tasting menu and donation-based meals supporting neighborhood food banks.",
+      "Local grand opening event featuring tastings, live cooking demos, and opening-week specials.",
     image: img4,
+    link: "https://www.example.com/",
   },
+
   {
     id: 5,
     slug: "food-distribution",
     title: "Food Distribution",
     category: "Food",
-    address: "1600 Man O' War Blvd.",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "Weekly fresh food distribution with boxes of produce, pantry staples, and recipes tailored for families.",
+      "Community food bank distribution providing fresh produce and pantry staples to residents.",
     image: img5,
+    link: "https://www.example.com/",
   },
+
   {
     id: 6,
     slug: "mental-health-counseling",
     title: "Mental Health Counseling",
     category: "Health",
-    address: "1600 Man O' War Blvd.",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "Low-cost counseling sessions with licensed professionals focusing on stress, anxiety, and family support.",
+      "Confidential mental health counseling sessions available by appointment for youth and adults.",
     image: img6,
+    link: "https://www.example.com/",
   },
+
   {
     id: 7,
     slug: "recreational-basketball-league",
     title: "Recreational Basketball League",
-    category: "Sport",
-    address: "1600 Man O' War Blvd.",
+    category: "Sports",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "Non-competitive basketball league emphasizing teamwork, fitness, and fun for teens and young adults.",
+      "Recreational basketball league with weekly games focused on fitness, teamwork, and fun.",
     image: img7,
+    link: "https://www.example.com/",
   },
+
   {
     id: 8,
     slug: "engineering-workshop",
     title: "Engineering Workshop",
     category: "Education",
-    address: "1600 Man O' War Blvd.",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "Hands-on STEM workshop exploring circuits, robotics, and basic engineering design challenges for students.",
+      "Hands-on STEM workshop covering basic engineering concepts and simple build projects.",
     image: img8,
+    link: "https://www.example.com/",
   },
+
   {
     id: 9,
-    slug: "career-resume-clinic",
-    title: "Career Resume Clinic",
-    category: "Employment",
-    address: "1600 Man O' War Blvd.",
+    slug: "mcdonalds-now-hiring",
+    title: "McDonald’s Now Hiring",
+    category: "Jobs",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "One-on-one resume reviews, mock interviews, and job search support hosted by local workforce specialists.",
+      "Local McDonald’s hiring event with on-the-spot interviews for part-time and full-time roles.",
     image: img9,
+    link: "https://www.example.com/",
   },
+
   {
     id: 10,
-    slug: "job-fair-local-employers",
-    title: "Job Fair: Local Employers",
-    category: "Employment",
-    address: "1600 Man O' War Blvd.",
+    slug: "hospital-shadowing-internship",
+    title: "Hospital Shadowing Internship",
+    category: "Health",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "Quarterly job fair connecting residents with local employers, apprenticeship programs, and training providers.",
+      "Hospital-based shadowing program for students interested in medical and healthcare careers.",
     image: img10,
+    link: "https://www.example.com/",
   },
+
   {
     id: 11,
-    slug: "community-clean-up",
-    title: "Community Clean-Up",
-    category: "Volunteering",
-    address: "1600 Man O' War Blvd.",
+    slug: "snap-emergency-assistance",
+    title: "SNAP Emergency Assistance",
+    category: "Support",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "Weekend trash pickup and beautification event that supplies gloves, bags, and tools for neighbors to clean shared spaces.",
+      "Help center assisting residents with SNAP applications, renewals, and emergency benefits.",
     image: img11,
+    link: "https://www.example.com/",
   },
+
   {
     id: 12,
-    slug: "volunteer-orientation",
-    title: "Volunteer Orientation",
-    category: "Volunteering",
-    address: "1600 Man O' War Blvd.",
+    slug: "coding-classes-for-teens",
+    title: "Coding Classes for Teens",
+    category: "Education",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "Monthly orientation session introducing new volunteers to partner organizations, roles, and upcoming projects.",
+      "Beginner-friendly coding workshops introducing teens to programming and web development.",
     image: img12,
+    link: "https://www.example.com/",
   },
+
   {
     id: 13,
-    slug: "after-school-wellness-check",
-    title: "After-School Wellness Check",
-    category: "Health",
-    address: "1600 Man O' War Blvd.",
+    slug: "literary-book-sorting-help",
+    title: "Literary Book Sorting Help",
+    category: "Volunteer",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "Drop-in wellness screening for students that includes basic health checks and referrals to local clinics.",
+      "Volunteer opportunity to sort, catalog, and shelve donated books at the community library.",
     image: img13,
+    link: "https://www.example.com/",
   },
+
   {
     id: 14,
-    slug: "community-interview-prep",
-    title: "Community Interview Prep",
+    slug: "resume-coaching",
+    title: "Resume Coaching",
     category: "Employment",
-    address: "1600 Man O' War Blvd.",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "Small-group sessions practicing interview questions, body language, and salary conversations in a supportive setting.",
+      "One-on-one resume review and coaching to strengthen job applications and career materials.",
     image: img14,
+    link: "https://www.example.com/",
   },
+
   {
     id: 15,
-    slug: "weekend-volunteer-drive",
-    title: "Weekend Volunteer Drive",
-    category: "Volunteering",
-    address: "1600 Man O' War Blvd.",
+    slug: "college-soccer-game",
+    title: "College Soccer Game",
+    category: "Sports",
+    address: "1600 Man O’ War Blvd.",
     details:
-      "Rotating volunteer opportunities with neighborhood nonprofits, from packing food boxes to mentoring youth.",
+      "Local college soccer match with free admission for students and community members.",
     image: img15,
+    link: "https://www.example.com/",
   },
+
+  // {
+  //   id: 16,
+  //   slug: "festival-preparation-help",
+  //   title: "Festival Preparation Help",
+  //   category: "Volunteer",
+  //   address: "1600 Man O’ War Blvd.",
+  //   details:
+  //     "Volunteer shift to assist with setup, decorations, and logistics for the upcoming festival.",
+  //   image: img16,
+  //   link: "https://www.example.com/",
+  // },
+
+  // {
+  //   id: 17,
+  //   slug: "ymca-senior-program",
+  //   title: "YMCA Senior Program",
+  //   category: "Health",
+  //   address: "1600 Man O’ War Blvd.",
+  //   details:
+  //     "Senior-focused YMCA program offering fitness classes, social activities, and wellness support.",
+  //   image: img17,
+  //   link: "https://www.example.com/",
+  // },
+
+  // {
+  //   id: 18,
+  //   slug: "parenting-support",
+  //   title: "Parenting Support",
+  //   category: "Support",
+  //   address: "1600 Man O’ War Blvd.",
+  //   details:
+  //     "Group sessions and resources for parents seeking guidance, connection, and family support.",
+  //   image: img18,
+  //   link: "https://www.example.com/",
+  // },
+
+  // {
+  //   id: 19,
+  //   slug: "homeless-outreach-program",
+  //   title: "Homeless Outreach Program",
+  //   category: "Support",
+  //   address: "1600 Man O’ War Blvd.",
+  //   details:
+  //     "Outreach program providing meals, hygiene kits, and resource navigation for unhoused neighbors.",
+  //   image: img19,
+  //   link: "https://www.example.com/",
+  // },
+
+  // {
+  //   id: 20,
+  //   slug: "cafe-opening",
+  //   title: "Cafe Opening",
+  //   category: "Food",
+  //   address: "1600 Man O’ War Blvd.",
+  //   details:
+  //     "Neighborhood cafe grand opening with live music, community specials, and local vendors.",
+  //   image: img20,
+  //   link: "https://www.example.com/",
+  // },
+
+  // {
+  //   id: 21,
+  //   slug: "local-animal-shelter-help",
+  //   title: "Local Animal Shelter Help",
+  //   category: "Volunteer",
+  //   address: "1600 Man O’ War Blvd.",
+  //   details:
+  //     "Volunteer opportunity assisting with animal care, cleaning, and adoption events at the shelter.",
+  //   image: img21,
+  //   link: "https://www.example.com/",
+  // },
+
+  // {
+  //   id: 22,
+  //   slug: "new-hiking-trail-established",
+  //   title: "New Hiking Trail Established",
+  //   category: "Outdoors",
+  //   address: "1600 Man O’ War Blvd.",
+  //   details:
+  //     "Announcement of a new community hiking trail with guided walks and trail stewardship info.",
+  //   image: img22,
+  //   link: "https://www.example.com/",
+  // },
+
+  // {
+  //   id: 23,
+  //   slug: "homework-help-centers",
+  //   title: "Homework Help Centers",
+  //   category: "Education",
+  //   address: "1600 Man O’ War Blvd.",
+  //   details:
+  //     "Drop-in homework help centers offering academic support and quiet study spaces for students.",
+  //   image: img23,
+  //   link: "https://www.example.com/",
+  // },
+
+  // {
+  //   id: 24,
+  //   slug: "summer-research-programs",
+  //   title: "Summer Research Programs",
+  //   category: "Education",
+  //   address: "1600 Man O’ War Blvd.",
+  //   details:
+  //     "Information hub for student summer research placements, internships, and lab opportunities.",
+  //   image: img24,
+  //   link: "https://www.example.com/",
+  // },
+
+  // {
+  //   id: 25,
+  //   slug: "remote-work-opportunities",
+  //   title: "Remote Work Opportunities",
+  //   category: "Employment",
+  //   address: "1600 Man O’ War Blvd.",
+  //   details:
+  //     "Resource center listing vetted remote and hybrid job opportunities with application guidance.",
+  //   image: img25,
+  //   link: "https://www.example.com/",
+  // },
+
+  // {
+  //   id: 26,
+  //   slug: "group-marathon-announced",
+  //   title: "Group Marathon Announced",
+  //   category: "Sports",
+  //   address: "1600 Man O’ War Blvd.",
+  //   details:
+  //     "Community group marathon and fun run event with training meetups leading up to race day.",
+  //   image: img26,
+  //   link: "https://www.example.com/",
+  // },
 ];
 
 export const CATEGORIES = [
