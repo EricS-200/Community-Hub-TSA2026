@@ -26,3 +26,9 @@ A checklist catches avoidable failures; it cannot guarantee compliance or perfor
 Capture the failures, fixes, and surprises while they are still fresh. Keep a brief **what worked / what didn't / what we'll change** retrospective.
 
 Official rules are available via [FIRST](https://www.firstinspires.org/).
+
+## Rehearse one recovery
+
+Use a practice session to reproduce a routine software recovery under supervision: find the last known-good commit, identify the build toolchain and locate configuration notes. Keep an offline copy of essential instructions. Use [the maintained program pages](../resource-library/kentucky-teams-season.md) for current event and inspection information.
+
+_Editorial review: November 17, 2026._

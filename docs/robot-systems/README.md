@@ -20,6 +20,7 @@ Electrical, mechanical, and software systems fail at their interfaces. This sect
 
 ## Think in interfaces
 
+{% code collapsedlinecount="10" %}
 ```mermaid
 flowchart LR
     D[Driver input] --> C[Robot controller]
@@ -28,6 +29,7 @@ flowchart LR
     M --> A[Actuators]
     A --> S
 ```
+{% endcode %}
 
 The diagram is conceptual; real robot wiring and architecture must follow your program's current rules and vendor instructions.
 
@@ -52,4 +54,10 @@ The diagram is conceptual; real robot wiring and architecture must follow your p
 **Safety first.** De-energize hardware before changing connections, secure moving mechanisms, follow manufacturer procedures, and use a trained mentor for work involving batteries, high-current circuits, tools, and energized systems. Follow your program's current safety rules.
 {% endhint %}
 
-Useful references: [FRC official resources](https://www.firstinspires.org/robotics/frc), [WPILib hardware documentation](https://docs.wpilib.org/en/stable/), [REV Robotics documentation](https://docs.revrobotics.com/).
+Useful references: [FRC official resources](https://www.firstinspires.org/programs/frc/), [WPILib hardware documentation](https://docs.wpilib.org/en/stable/), [REV Robotics documentation](https://docs.revrobotics.com/).
+
+## Start with a traceable question
+
+![Synthetic target and measured-position traces. A plot supports a question, not an automatic diagnosis.](../.gitbook/assets/telemetry.svg) For an intermittent fault, use [the telemetry lab](../tools-workflows/debug-with-logs.md). For a repeatable process, save configuration, code commit, conditions and the retest result together.
+
+_Editorial review: November 17, 2026._

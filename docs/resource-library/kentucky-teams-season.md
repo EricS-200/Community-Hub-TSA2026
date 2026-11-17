@@ -34,3 +34,11 @@ The list deliberately links to maintained landing pages instead of copying seaso
 ## For new Kentucky teams
 
 Start by identifying the relevant program and season, then contact the regional organization about events and support. Use the [resource library](./) to help students acquire technical and nontechnical skills while the team gets established.
+
+## Before contacting a program partner
+
+Prepare your program/division, county or service area, team status, question and the support you need. For an event, confirm registration, eligibility and the current organizer's instructions at the source. For a grant, keep the source URL and date checked; a directory entry does not mean applications remain open.
+
+**First local action:** choose the relevant program page above and record one next step with an owner. Use the [resource library](./) for student training while administrative questions are resolved.
+
+_Editorial review: November 17, 2026._

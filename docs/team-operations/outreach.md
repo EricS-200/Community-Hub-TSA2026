@@ -37,3 +37,17 @@ Give small groups paper, tape, and a load target. Ask them to build, test, and r
 ## Impact report
 
 Record **who participated**, **what they did**, **what changed**, and **what you will do next**. Avoid unsupported impact claims. Credit community partners accurately.
+
+## A useful teaching reference
+
+<figure><img src="../.gitbook/assets/outreach.svg" alt="Plan access, activity and evidence with a partner before running an outreach event."><figcaption><p>Plan access, activity and evidence with a partner before running an outreach event.</p></figcaption></figure>
+
+### Inventive Outreach and Your Team
+
+Sarah Heimlich’s Spartan Series presentation is linked from FIRST’s team-management library.
+
+{% embed url="https://www.youtube.com/watch?v=tw8kkre6hK4" %}
+
+[Watch at YouTube](https://www.youtube.com/watch?v=tw8kkre6hK4) · **Use it:** Write one change you will make to the activity because of a participant or partner need.
+
+_Editorial review: November 17, 2026._

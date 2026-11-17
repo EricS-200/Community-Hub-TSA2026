@@ -9,8 +9,11 @@ icon: plug
 
 An **MCP server** (Model Context Protocol) is a connector that describes tools and data an AI assistant can use. The assistant asks a server to perform actions; the server interacts with a real application, repository, or service. MCP is not a new model and doesn't automatically grant access to every file.
 
+<figure><img src="../.gitbook/assets/mcp-workflow.svg" alt="The assistant reaches an application through a particular MCP server. Each connection exposes a specific set of tools."><figcaption><p>The assistant reaches an application through a particular MCP server. Each connection exposes a specific set of tools.</p></figcaption></figure>
+
 ## What changes when you connect a tool?
 
+{% code collapsedlinecount="10" %}
 ```mermaid
 flowchart LR
   A[You ask an assistant] --> B[MCP client]
@@ -18,16 +21,17 @@ flowchart LR
   C --> D[Application or data]
   D --> C --> B --> A
 ```
+{% endcode %}
 
 Without a connection, an assistant can suggest CAD steps. With an appropriate **CAD MCP**, it may be able to inspect and change an actual model in an authorized session.
 
 ## Three practical types
 
-| Type                       | Example                                                                                                               | What it does                                                       |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| **Local desktop**          | [Autodesk Fusion local MCP](https://help.autodesk.com/view/fusion360/ENU/?guid=FMCP-OVERVIEW)                         | Accesses a running app on your computer                            |
-| **Cloud service**          | [Fusion Data MCP](https://www.autodesk.com/products/fusion-360/blog/introducing-the-autodesk-fusion-data-mcp-server/) | Accesses authorized cloud projects, folders, or items              |
-| **Code / developer tools** | [Codex MCP support](https://learn.chatgpt.com/docs/extend/mcp)                                                        | Adds documentation, services, or developer tools to a coding agent |
+| Type                       | Example                                                                                       | What it does                                                       |
+| -------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| **Local desktop**          | [Autodesk Fusion local MCP](https://help.autodesk.com/view/fusion360/ENU/?guid=FMCP-OVERVIEW) | Accesses a running app on your computer                            |
+| **Cloud service**          | [Fusion Data MCP](https://help.autodesk.com/view/fusion360/ENU/?guid=FMCP-OVERVIEW)           | Accesses authorized cloud projects, folders, or items              |
+| **Code / developer tools** | [Codex MCP support](https://learn.chatgpt.com/docs/extend/mcp)                                | Adds documentation, services, or developer tools to a coding agent |
 
 ## A setup pattern that works for most MCPs
 
@@ -76,3 +80,13 @@ MCP tools can perform real operations. Treat requests to execute code, edit proj
 {% endhint %}
 
 **Try next:** [Fusion MCP](fusion-mcp.md), [Onshape FeatureScript MCP](onshape-mcp.md), or [Codex for robotics code](codex-for-robotics.md).
+
+<details>
+
+<summary>Your first successful connection should be small</summary>
+
+Record the client, server publisher, transport (local command or HTTP), endpoint/launcher, authentication method and the exact read-only tool result you checked. A green status icon alone does not prove the assistant reached the right design. For a complete example, use the Fusion or Onshape guide below.
+
+</details>
+
+_Editorial review: November 17, 2026._

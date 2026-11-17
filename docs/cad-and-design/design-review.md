@@ -26,3 +26,11 @@ Ask for calculations, fit checks, prototypes, test data, or documented prior exp
 | Next review        | Who will follow up, and when?     |
 
 **Review outcome:** approved for prototype, revise and resubmit, or stop and rethink. A rejection with useful reasons is progress.
+
+## Bring evidence to the meeting
+
+Use [FRCDesign’s design handbook](https://www.frcdesign.org/design-handbook/) for deeper design references and [GM0 mechanisms](https://gm0.org/en/latest/docs/common-mechanisms/) for FTC tradeoffs.
+
+**A useful review packet:** one dimensioned interface view, one calculation or prototype observation, the manufacturing plan, and the most consequential unknown. Assign the follow-up test and owner before leaving.
+
+_Editorial review: November 17, 2026._

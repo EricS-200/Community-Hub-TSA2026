@@ -25,3 +25,9 @@ Save your work in the right shared location. Add a short note: **purpose → app
 * What should the next new student know?
 
 [Back to Start here](./).
+
+## A course to pair with the week
+
+Choose [FRC software](../resource-library/frc-software-controls.md), [FTC](../resource-library/ftc-build-code.md), [FLL](../resource-library/fll-lego-learning.md) or [CAD](../resource-library/cad-mechanical-design.md). Ask the lead to define one artifact a teammate will actually use. Save its shared link and reviewer name before calling the week complete.
+
+_Editorial review: November 17, 2026._

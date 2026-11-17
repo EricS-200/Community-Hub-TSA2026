@@ -46,3 +46,9 @@ Do not bypass interlocks or safety systems to diagnose a fault. Escalate uncerta
 **Retest result:** …
 
 **Owner / follow-up:** …
+
+## A deeper diagnostic workflow
+
+[Compare target, measurement and output on one timeline](../tools-workflows/debug-with-logs.md). Keep the original log before changing code. A good issue includes the commit, configuration, symptom time, first differing signal and a single controlled retest. Use [AdvantageScope](https://docs.advantagescope.org/) or [FTC Dashboard](https://acmerobotics.github.io/ftc-dashboard/) according to the project.
+
+_Editorial review: November 17, 2026._

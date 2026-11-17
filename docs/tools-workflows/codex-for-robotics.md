@@ -1,93 +1,90 @@
 ---
 description: >-
-  Use a coding agent on a real robot repository without losing review,
-  reproducibility, or safety.
+  Use a coding agent on the team’s actual project, with small tasks and visible
+  evidence.
 icon: terminal
 ---
 
 # Codex for robotics code
 
-**What is different from a chatbot?** Codex can operate in a checked-out repository, inspect multiple files, propose edits, run available tests, and show a diff. Used well, it helps students understand a codebase and make small, reviewable changes—not blindly generate an entire robot program.
+**Use this when:** you need to understand an unfamiliar repository, investigate a software failure, improve tests or repair setup notes. Codex can inspect a project, propose changes and run available checks; the team's review remains essential.
 
-**Start here:** [Codex CLI getting started](https://learn.chatgpt.com/docs/codex/cli), [official Codex repository](https://github.com/openai/codex), [MCP connections](https://learn.chatgpt.com/docs/extend/mcp).
-
-## First-time setup
+## Start with the project, not a giant prompt
 
 {% stepper %}
 {% step %}
-### Prepare a safe repository
+### Prepare a training checkout
 
-Clone a training repository or create a non-hardware test branch. Confirm Git status is clean. Never use a live competition computer as the first experimental environment.
+Use a branch or copy of a repository. Identify its WPILib/FTC SDK version and the normal build/test entry points. Keep robot deployment outside the experiment.
 {% endstep %}
 
 {% step %}
-### Install Codex
+### Open the repository
 
-Follow the [official install options](https://learn.chatgpt.com/docs/codex/cli) for your operating system and editor. Codex supports a terminal workflow and IDE integrations; sign in through a supported method.
+Follow [official Codex setup](https://learn.chatgpt.com/docs/codex/cli) for your operating system and sign-in method. In a CLI workflow, run `codex` from the project directory.
 {% endstep %}
 
 {% step %}
-### Open the repository in Codex
+### Ask for a read-only map
 
-From the project directory, start `codex` and begin with a **read-only analysis task**, such as “Map the subsystems, explain the command scheduling flow, and identify the test entry points. Do not edit any files.”
+Ask where hardware is defined, how commands/OpModes are selected and where tests run. Require file references, then open those files yourself.
 {% endstep %}
 
 {% step %}
-### Make a deliberately small change
+### Make one reviewed change
 
-Create a Git branch. Ask for one targeted edit and tests. Review every changed file and run your normal build/simulation/checks before a pull request.
+Choose a documentation or pure-software task first. Inspect the diff, run the normal checks and ask another student to explain the behavior. Record what could not be tested.
 {% endstep %}
 {% endstepper %}
 
-## Good prompts for student teams
+## Prompts that teach useful habits
 
 {% tabs %}
-{% tab title="Learn the codebase" %}
-“Explain where driver input is mapped to commands. List the key classes and their relationships, then propose three diagrams a new student could use. Do not change files.”
+{% tab title="Understand" %}
+> Map driver input to one robot behavior. Cite the files and explain the subsystem/command or OpMode lifecycle. Identify how the project is built and tested. Do not edit files or deploy.
 {% endtab %}
 
-{% tab title="Find an error" %}
-“This command stops unexpectedly after enabling. Trace the control flow, identify the most likely causes with file references, and propose a minimal fix plus a test. Do not touch hardware.”
+{% tab title="Investigate" %}
+> Here is the observed failure and the relevant log time. Trace the code that could produce it. Separate evidence from hypotheses. Propose the smallest software test that distinguishes the hypotheses. Do not touch hardware or change tuning yet.
 {% endtab %}
 
-{% tab title="Improve tests" %}
-“Find one pure utility function with no unit coverage. Add edge-case tests and run only the relevant software tests. Summarize assumptions and the resulting diff.”
+{% tab title="Improve a test" %}
+> Find a pure utility function with meaningful boundary cases. Explain its intended behavior, add a focused test, and run the relevant checks. Show the diff and disclose any test you could not run.
 {% endtab %}
 
-{% tab title="Write documentation" %}
-“Compare README setup instructions to the current project configuration. Fix discrepancies, but do not change dependencies or deployment commands.”
+{% tab title="Repair onboarding" %}
+> Compare setup notes with project configuration. Correct verified discrepancies in documentation only. Keep dependencies and deploy behavior unchanged. Give a new student a reproducible build checklist.
 {% endtab %}
 {% endtabs %}
 
-## Add project-specific rules
+## Give the agent project context
 
-Codex supports `AGENTS.md` project instructions. A robotics repository could include rules like:
+Document the team's repository rules in `AGENTS.md`, for example:
 
 ```markdown
-# Project instructions
-- Do not deploy to a physical robot.
-- Do not alter motor safety, limits, or disable behavior without review.
-- Prefer changes that can be verified with existing tests or simulation.
-- Cite the current WPILib / FTC SDK documentation for API changes.
-- Summarize every change and any unverified behavior.
+- Never deploy to a robot from an agent session.
+- Identify the SDK/toolchain version before suggesting API changes.
+- Use the repository's existing build and test procedure.
+- Require human review for motor limits, disable behavior and tuning.
+- Report the diff, checks run and unverified physical behavior.
 ```
 
-This is a helpful instruction file, **not a substitute for permissions or sandboxing**. Set client permissions appropriately.
+Instructions guide behavior; they do not enforce access controls. Configure tool permissions and keep credentials out of prompts and repositories. See the [official Codex repository](https://github.com/openai/codex) and current product documentation.
 
-## Connect MCPs for more context
+### Watch: OpenAI — Getting started with Codex
 
-Codex can connect to MCP servers so it can consult external documentation and tools while working. Follow the [official MCP guide](https://learn.chatgpt.com/docs/extend/mcp) for the current command syntax, approval rules, and supported transport types. Start with a documentation-only connector before granting write actions.
-
-## Team safeguards
-
-* Keep changes on branches and require code review.
-* Use simulation for robot behavior where practical.
-* Never store tokens or team secrets in prompts or repositories.
-* Inspect the patch, the commands executed, and the test output.
-* A successful build does **not** prove that physical hardware motion is safe.
-
-### Walkthrough video
-
-[Getting started with Codex](https://www.youtube.com/watch?v=px7XlbYgk7I) explains CLI/editor installation, project instructions, and a repository workflow.
+The official introduction to the coding workflow.
 
 {% embed url="https://www.youtube.com/watch?v=px7XlbYgk7I" %}
+
+[Watch at YouTube](https://www.youtube.com/watch?v=px7XlbYgk7I) · **Use it:** Run a read-only repository mapping task, then verify three file references yourself.
+
+## MCP connections: add only the context you need
+
+The [official MCP guide](https://learn.chatgpt.com/docs/extend/mcp?surface=cli) describes connection and authorization. Use `codex mcp list` to inspect configured servers. Do not connect CAD write tools merely to answer a WPILib question.
+
+For a concrete CAD connection, see [the Fusion example](fusion-mcp.md). For code changes, see [the team review workflow](../programming/git-and-code-review.md).
+
+**Done means:** a human can explain the change, the software checks are recorded, and remaining hardware assumptions are explicit.
+
+_Last editorial review: November 17, 2026. Follow current publisher documentation for software and season changes._

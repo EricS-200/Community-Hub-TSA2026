@@ -1,51 +1,48 @@
 ---
 description: >-
-  A shortlist of high-leverage, often-overlooked robotics tooling beyond basic
-  programming and CAD.
+  A small engineering toolbox organized around blind spots, not product
+  popularity.
 icon: radar
 ---
 
 # Underused robotics tools
 
-A collection of tools that solve real problems but can be missed by students who only follow an introductory programming course.
+## Choose by the missing evidence
 
-## Diagnose with data instead of guesses
+<table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><i class="fa-chart-line">:chart-line:</i></td><td><h3><a href="debug-with-logs.md">Logs before guesses</a></h3></td><td>Review commands, inputs and outputs on one timeline.</td></tr><tr><td><i class="fa-laptop-code">:laptop-code:</i></td><td><h3><a href="practice-without-robot.md">A robot-time alternative</a></h3></td><td>Test state transitions and assumptions offline.</td></tr><tr><td><i class="fa-cube">:cube:</i></td><td><h3><a href="fusion-mcp.md">Repetitive CAD work</a></h3></td><td>Try one named parameter change in a design copy.</td></tr><tr><td><i class="fa-shapes">:shapes:</i></td><td><h3><a href="onshape-mcp.md">Reusable custom features</a></h3></td><td>Encode a small CAD operation and test invalid cases.</td></tr></tbody></table>
 
-| Tool                                                                                                                      | What it unlocks                                                                | Who should try it                                        |
-| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------- |
-| [AdvantageScope](https://docs.advantagescope.org/)                                                                        | Visualize WPILib and vendor logs, field pose, telemetry, and 2D/3D robot state | Software teams investigating intermittent failures       |
-| [AdvantageKit](https://github.com/Mechanical-Advantage/AdvantageKit)                                                      | Structured logging and replay-oriented robot software                          | FRC software teams designing a maintainable architecture |
-| [WPILib SysId](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/system-identification/introduction.html) | Characterize mechanisms so control constants are based on evidence             | Teams moving beyond guessed feedforward constants        |
-| [PathPlanner](https://pathplanner.dev/)                                                                                   | Create and tune autonomous paths; supported robot integrations                 | FRC auto developers                                      |
-| [Elastic](https://github.com/Gold872/elastic-dashboard)                                                                   | Build a modern robot dashboard                                                 | Teams improving driver-facing diagnostics                |
-| [The Blue Alliance](https://www.thebluealliance.com/)                                                                     | FRC event records, videos, and robot history                                   | Strategy teams seeking past-match context                |
+## Four deeper discoveries
 
-**Suggested challenge:** open a recorded robot log in AdvantageScope, identify one unexpected behavior, and write down the evidence. A screenshot alone is not a diagnosis; compare logged signals against an explicit hypothesis.
+{% tabs %}
+{% tab title="Characterization" %}
+[WPILib SysId](https://docs.wpilib.org/en/stable/docs/software/advanced-controls/system-identification/introduction.html) helps characterize a mechanism so feedforward values come from recorded experiments. Start with the official method and the team's supervised test procedure, not arbitrary motor sweeps.
 
-## Faster hardware and design iteration
+**Pilot:** review a recorded dataset, identify the units and model assumptions, and explain which operating region it represents. Compare the resulting model with another dataset before using it for control.
+{% endtab %}
 
-| Resource                                                                                                             | Useful blind spot                                           |
-| -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| [Onshape FeatureScript MCP](onshape-mcp.md)                                                                          | Automate your team's repetitive CAD feature operations      |
-| [Fusion local MCP](fusion-mcp.md)                                                                                    | Let an authorized assistant inspect and change a live model |
-| [FRCDesign part library](https://www.frcdesign.org/learning-course/course-setup/required-course-tools/part-library/) | Avoid redrawing common vendor components                    |
-| [FTC Game Manual 0](https://gm0.org/en/latest/)                                                                      | Learn mechanism tradeoffs rather than copy a single build   |
-| [PhotonVision](https://docs.photonvision.org/en/latest/)                                                             | More systematic robot vision and camera calibration         |
+{% tab title="Vision frames" %}
+[PhotonVision coordinate systems](https://docs.photonvision.org/en/latest/docs/apriltag-pipelines/coordinate-systems.html), [camera calibration](https://docs.photonvision.org/en/latest/docs/calibration/calibration.html) and [pose-estimation integration](https://docs.photonvision.org/en/latest/docs/programming/photonlib/robot-pose-estimator.html) address a common blind spot: detection is not yet a trustworthy field pose.
 
-## Workflow ideas worth testing
+**Pilot:** with a stationary robot or offline example, document the field, robot, camera and tag frames; verify the robot-to-camera transform and units; compare estimated pose with a known placement. Then inspect latency/timestamps and behavior when tags disappear. A stable picture does not prove the transform is correct.
+{% endtab %}
 
-Log enough inputs and outputs to replay the event. Compare expected and actual motion in AdvantageScope. Record the minimal suspected cause and verify with a controlled follow-up test.
+{% tab title="Offline scouting" %}
+[The Blue Alliance API](https://www.thebluealliance.com/apidocs) and [Statbotics](https://statbotics.readthedocs.io/en/latest/) are useful inputs, but your team still needs consistent identifiers and observation definitions.
 
-Use a small Onshape FeatureScript feature to encode a familiar bolt-pattern spacing or edge-distance check. Treat it as a teaching tool first; validate each dimension and formula.
+**Pilot:** take two independent observations of one match, preserve unknowns, resolve disagreements and join by the same match identity. Test export and recovery without venue Wi-Fi. Continue in [the scouting collection](../resource-library/strategy-scouting-data.md).
+{% endtab %}
 
-Let Codex map the repository and identify stale setup instructions. Have it propose a documentation-only patch, then let a new student follow the revised steps independently.
+{% tab title="Parts & dashboards" %}
+[FRCDesign’s part-library guide](https://www.frcdesign.org/learning-course/course-setup/required-course-tools/part-library/) helps avoid recreating standard components. [Elastic](https://github.com/Gold872/elastic_dashboard) is a community FRC dashboard option. [AdvantageScope](https://docs.advantagescope.org/) supports deeper diagnostics.
 
-Compare public predicted ratings with a handful of match videos. Record where a rating misses a team's actual role or unusual strategy; present model outputs as estimates.
+**Pilot:** build a driver-facing display that answers three operational questions, then ask the drive team to interpret it under time pressure. Keep analysis views separate from the essential match display.
+{% endtab %}
+{% endtabs %}
 
-## Adoption rule
+## The adoption filter
 
-Try a tool only if it answers a specific question, replaces repeatable manual work, or improves decision quality. Avoid adding software purely because it is impressive. Start with one test, one owner, and one measurable result.
+Choose a specific question, a maintainer and an exit condition. Keep the tool only if the pilot improves a real decision or repeated task. Check version compatibility and source instructions before making it part of a competition workflow.
 
-{% hint style="info" %}
-Many of these tools are community-developed rather than official competition products. Check compatibility, project maintenance, license terms, and current rules before adopting them for a season.
-{% endhint %}
+For deeper controls training, use [Spectrum 3847](https://blog.spectrum3847.org/resources/training/). For AI-assisted repository work, use [the Codex workflow](codex-for-robotics.md).
+
+_Last editorial review: November 17, 2026. Follow current publisher documentation for software and season changes._

@@ -47,3 +47,9 @@ Read [GitHub's pull request guide](https://docs.github.com/en/pull-requests/coll
 ## Review prompt
 
 Can the reviewer answer: _what changed, why, how was it tested, and how would we undo it if necessary?_
+
+## Make review teach something
+
+Use [GitHub Skills](https://skills.github.com/) for a guided collaboration exercise, then transfer it to a documentation-only pull request in your training repository. Ask a reviewer to identify one changed behavior and one missing assumption. Use [Codex](../tools-workflows/codex-for-robotics.md) for a small proposal only after the student can explain the review.
+
+_Editorial review: November 17, 2026._

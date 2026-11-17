@@ -32,3 +32,9 @@ Keep approved templates, partner contact history, event retrospectives, and perm
 ## A five-minute documentation review
 
 Ask a newer member to locate one important file and explain how to use it without help. If they cannot, update navigation and instructions. Test the documentation as carefully as the process itself.
+
+## Test the handoff
+
+Ask a new student to reproduce one build, one CAD change or one event brief without the author present. Keep the first point of confusion and the fix. Use [the GitBook/GitHub maintenance loop](../tools-workflows/maintain-team-docs.md) so the correction lands in the shared source.
+
+_Editorial review: November 17, 2026._

@@ -1,60 +1,74 @@
 ---
 description: >-
-  Use Onshape's official FeatureScript MCP to create and test custom CAD
-  features.
+  Connect the official service and test a reusable CAD feature against a small
+  acceptance matrix.
+icon: shapes
 ---
 
 # Onshape FeatureScript MCP
 
-**The niche capability:** Onshape has an official **FeatureScript MCP** that connects an assistant to its custom-feature authoring workflow. It can help create, test, and refine _reusable CAD tools_, not just explain how to draw a part.
+**Use this when:** your CAD team repeats the same modeling operation across many parts. Onshape's official MCP focuses on **FeatureScript authoring and testing**, rather than unrestricted natural-language operation of every CAD command.
 
-Read: [Onshape overview](https://www.onshape.com/en/features/featurescript-mcp), [official getting-started guide](https://www.onshape.com/en/blog/get-started-featurescript-mcp-server), and [Claude Code connection tutorial](https://www.onshape.com/en/resource-center/tech-tips/connect-featurescript-mcp-server-claude-code).
-
-## What a robotics team could build
-
-* A configurable bolt-pattern feature that uses standard spacing.
-* An automated relief/corner treatment for a familiar manufacturing process.
-* A feature that checks a team's minimum edge distance assumptions.
-* A repeatable modeling operation that new CAD students can reuse.
-
-These are **custom-feature projects**, not verified mechanical design calculations. A mentor or experienced designer should validate generated FeatureScript and geometry.
-
-## Connect it
+## Connection recipe
 
 {% stepper %}
 {% step %}
-### Prepare an Onshape account
+### Enable the official app
 
-Check the [Onshape product page](https://www.onshape.com/en/features/featurescript-mcp) for current availability, eligibility, and any Labs/App Store prerequisites.
+Sign in to Onshape and find **FeatureScript MCP Server** in the [Onshape App Store](https://cad.onshape.com/appstore). Follow the subscription and application-settings steps in [Onshape's setup guide](https://www.onshape.com/en/blog/get-started-featurescript-mcp-server). It is an Onshape Labs service; check current access and pricing before adopting it. No purchase is required to use this hub.
 {% endstep %}
 
 {% step %}
-### Subscribe through the Onshape App Store
+### Add the documented endpoint
 
-Follow Onshape's [published setup guide](https://www.onshape.com/en/blog/get-started-featurescript-mcp-server). It describes enabling the FeatureScript MCP Server through the App Store.
+Onshape's [Claude Code connection guide](https://www.onshape.com/en/resource-center/tech-tips/connect-featurescript-mcp-server-claude-code) uses:
+
+{% code collapsedlinecount="10" %}
+```bash
+claude mcp add --transport http onshape https://fs-mcp.labs.onshape.app/mcp
+```
+{% endcode %}
+
+Launch Claude Code and follow the documented authorization and `/mcp` authentication flow. If using another client, use its HTTP/OAuth instructions; do not paste a Claude command into another client's settings.
 {% endstep %}
 
 {% step %}
-### Add the endpoint to a supported assistant
+### Prove the connection
 
-Use an MCP-compatible coding assistant, configure the service endpoint as instructed, and authenticate. The exact method depends on the client.
-{% endstep %}
-
-{% step %}
-### Start with one tiny feature
-
-Generate a simple parametric feature in a sandbox document. Inspect the FeatureScript, test a few parameters, and confirm the output is valid.
+Create a disposable Onshape document. Ask the assistant to create a Feature Studio named `FS1` in **that document URL**, then verify it appears. Authorize only the intended Onshape account.
 {% endstep %}
 {% endstepper %}
 
-## Important distinction
+## A useful robotics pilot: a rectangular mounting pattern
 
-The official **FeatureScript MCP** focuses on writing and iterating on custom Onshape features. It is not equivalent to granting unrestricted natural-language control over every assembly or document operation. Third-party Onshape MCP projects can expose different tool sets, with different trust and security considerations.
+<figure><img src="../.gitbook/assets/cad-automation.svg" alt="A concept mounting plate with four holes. Geometry is illustrative and must be checked against real manufacturing requirements."><figcaption><p>A concept mounting plate with four holes. Geometry is illustrative and must be checked against real manufacturing requirements.</p></figcaption></figure>
 
-{% hint style="warning" %}
-Onshape describes the service as an early-access / Labs capability. Availability and pricing can change. Check the current official App Store entry before committing to a team workflow.
-{% endhint %}
+Define the feature before asking for code:
 
-## A pilot project
+> Create a custom feature for a planar face that cuts a two-by-two mounting pattern. Inputs: center, X spacing, Y spacing, hole diameter. Use explicit units. Reject zero or negative dimensions and explain invalid selections. Start in the test document. Show the FeatureScript and any errors before iterating.
 
-Ask a CAD lead to define one repetitive operation and expected dimensions. Create a feature that automates only that task. Test it on three deliberately different sample parts, including an invalid case. Share both the feature and its limitations with the team.
+These are suggested requirements, not guaranteed server behavior. A CAD lead reviews selection logic, geometry and FeatureScript before reusing it.
+
+| Test                             | Evidence to inspect                                            |
+| -------------------------------- | -------------------------------------------------------------- |
+| Nominal plate                    | Four correctly located holes, dimensions match inputs          |
+| Different spacing and face       | Feature follows the selected face and new inputs               |
+| Too-small plate                  | Team-defined boundary behavior is clear; no silent invalid cut |
+| Zero diameter or wrong selection | Clear validation message or a documented limitation            |
+| Upstream geometry changes        | Rebuild succeeds or fails understandably                       |
+
+**Keep:** document/version link, input examples, limitations, and the test matrix. A feature that works once is not yet a team standard.
+
+<details>
+
+<summary>Where this workflow stops</summary>
+
+FeatureScript MCP can help write and iterate custom features. It does not certify loads, fastener sizing, tolerances or competition legality. Community Onshape MCP projects can have entirely different capabilities. Check the tool list rather than assuming every “Onshape MCP” is the same service.
+
+</details>
+
+**If access is unavailable:** learn [FeatureScript directly](https://cad.onshape.com/FsDoc/) and prototype the feature manually; the design and test work still transfers.
+
+**Next:** [Fusion desktop MCP](fusion-mcp.md) · [CAD courses and libraries](../resource-library/cad-mechanical-design.md).
+
+_Last editorial review: November 17, 2026. Follow current publisher documentation for software and season changes._

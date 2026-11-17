@@ -39,3 +39,15 @@ Begin with a supported sample OpMode. Read the hardware configuration and teleme
 {% hint style="warning" %}
 Do not copy old motor-control code onto a live robot without checking current APIs, wiring, motion limits, and the applicable safety requirements.
 {% endhint %}
+
+## Learn from a worked example
+
+### FTC example: starter Blocks programming
+
+Older goBILDA starter lesson. Use it to trace a control flow, then check the current FTC Docs sample and configuration.
+
+{% embed url="https://www.youtube.com/watch?v=Sjt3rufGoDs" %}
+
+[Watch at YouTube](https://www.youtube.com/watch?v=Sjt3rufGoDs) · **Use it:** Identify the hardware names, the control input and the stop behavior. FRC learners should use the WPILib path above.
+
+_Editorial review: November 17, 2026._

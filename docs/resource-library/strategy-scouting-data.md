@@ -1,35 +1,51 @@
 ---
-description: Strategy workshops, match analysis, scouting, and decision-making resources.
+description: Turn observations and public data into a decision your drive team can explain.
+icon: chart-simple
 ---
 
 # Strategy, scouting & data
 
-**For:** strategy groups, scouts, drive teams, and data-curious students. Start by defining what you need to decide, then collect only the evidence that helps make that decision.
+**Start with the decision:** match roles, autonomous selection, alliance fit or a design tradeoff. Collect the smallest set of evidence that can change that decision.
 
-## Learn the strategy process
+## Learn the method
 
-| Resource                                                                                                 | Format              | Why use it                                                                        |
-| -------------------------------------------------------------------------------------------------------- | ------------------- | --------------------------------------------------------------------------------- |
-| [FIRST FRC technical resources](https://www.firstinspires.org/resources/library/frc/technical-resources) | Official directory  | Includes Karthik Kanagasabapathy's strategy presentation and other curated guides |
-| [Team 1114 Simbotics resources](https://www.simbotics.org/resources)                                     | Presentations       | Effective FRC strategies, match planning, scouting                                |
-| [LearnFRC videos](https://learnfrc.com/videos)                                                           | Video lessons       | Structured introduction to competition and data topics                            |
-| [GM0 — design strategy](https://gm0.org/en/latest/docs/design-skills/design-strategy.html)               | FTC community guide | Connecting design decisions with actual match goals                               |
-| [NASA FRC community resources](https://robotics.nasa.gov/frc-resources/)                                 | Resource directory  | Archived workshops and community material                                         |
+* [Team 1114 Simbotics resources](https://www.simbotics.org/resources/) — established strategy and team presentations. Useful for connecting scoring objectives to robot and match choices.
+* [FIRST FRC technical resources](https://www.firstinspires.org/resources/library/frc/technical-resources) — the official curated directory, including strategy references. Check current rules separately.
+* [GM0 design strategy](https://gm0.org/en/latest/docs/design-skills/design-strategy.html) — FTC tradeoffs before committing to a mechanism.
 
-## Data and community tools
+## A deeper blind spot: your data needs a contract
 
-| Resource                                                   | Format                    | Use with care                                          |
-| ---------------------------------------------------------- | ------------------------- | ------------------------------------------------------ |
-| [The Blue Alliance](https://www.thebluealliance.com/)      | FRC event database        | Match schedules, teams, videos, and history            |
-| [Statbotics](https://statbotics.readthedocs.io/en/latest/) | FRC analytics docs        | EPA ratings and statistical interpretation             |
-| [Chief Delphi](https://www.chiefdelphi.com/)               | Community forum           | Design reviews, season discussion, technical questions |
-| [FTC Central](https://ftccentral.org/)                     | FTC events/scouting tools | Community analytics using FTC event data               |
-| [PathPlanner](https://pathplanner.dev/)                    | Autonomous planning tool  | FRC paths and controlled testing                       |
+Before writing a scouting app, define an event identity, team identifier, match identifier, alliance, scout identifier, observation fields, units and a schema version. Separate an **unknown** observation from a measured zero. Record a correction rather than silently overwriting a disagreement.
 
-{% hint style="warning" %}
-Public rankings and scouting estimates are models or summaries, not measurements of every robot action. Validate assumptions with match video, pit conversations, and direct observation, and follow event rules when collecting data.
-{% endhint %}
+{% tabs %}
+{% tab title="Public data" %}
+[The Blue Alliance API](https://www.thebluealliance.com/apidocs) exposes FRC event data. [Statbotics documentation](https://statbotics.readthedocs.io/en/latest/) explains its analytics interface. Keep data retrieval time and event/match identity with your analysis. Authentication and API usage policies belong to each service.
 
-## Try this in a team meeting
+Use public ratings as a prior or comparison; they do not describe every role, defensive interaction or broken match. Review video when the model and your observation disagree.
+{% endtab %}
 
-Choose one past match. Before watching, predict which constraints matter. Watch it and record observable evidence. Revise your hypothesis. Compare against public event data. The point is to **practice decision-making**, not to produce a perfect ranking.
+{% tab title="Offline collection" %}
+Test your collection process with network access unavailable. Give each record a stable identity, preserve original exports and decide how duplicate or conflicting entries will be reviewed. Reconcile match identity before joining observations with public scores.
+
+**Exercise:** have two scouts code the same short video independently. Compare their definitions and disagreements before expanding the form.
+{% endtab %}
+
+{% tab title="Decision meeting" %}
+Present the recommendation, supporting evidence, uncertainty and the next observation that could change your mind. A short list with clear rationale is more useful than a ranking nobody can explain.
+
+Use [The Blue Alliance](https://www.thebluealliance.com/) for match context and video; [FTC Central](https://ftccentral.org/) offers community FTC event/scouting tools.
+{% endtab %}
+{% endtabs %}
+
+## Lab: audit one scouting metric
+
+1. Define exactly what observers count and when they stop counting.
+2. Independently code a few matches and inspect disagreement.
+3. Compare with public event outcomes without treating them as identical measurements.
+4. Write one decision the metric supports and one it cannot support.
+
+**Keep:** the field definition, a sample record, correction policy and one recommendation with uncertainty. Follow event policies and minimize personal information.
+
+**Next:** [autonomous reliability](../programming/autonomous-planning.md) · [preserve the decision process](../team-operations/knowledge-transfer.md).
+
+_Last editorial review: November 17, 2026. Follow current publisher documentation for software and season changes._

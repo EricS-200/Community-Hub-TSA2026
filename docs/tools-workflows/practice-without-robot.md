@@ -1,59 +1,51 @@
 ---
 description: >-
-  Simulation, offline learning, and realistic exercises when hardware or lab
-  time is limited.
+  Choose a realistic offline experiment and be explicit about what it cannot
+  validate.
+icon: laptop-code
 ---
 
 # Practice without a robot
 
-Teams often have more students than available robot time. A good training system offers **useful offline work** that still results in demonstrable skills.
+<figure><img src="../.gitbook/assets/simulation.svg" alt="Illustrative simulated route around an obstacle. Test commands, pose, timing and the limitations of the model."><figcaption><p>Illustrative simulated route around an obstacle. Test commands, pose, timing and the limitations of the model.</p></figcaption></figure>
 
-## Four starting points
+## Choose your environment
 
-| Tool                                                                                                                       | Useful for                                                 | Caveat                                                          |
-| -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------- |
-| [WPILib Robot Simulation](https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robot-simulation/introduction.html) | FRC code, command scheduling, simulated mechanism behavior | A simulated mechanism only models what you explicitly configure |
-| [AdvantageScope](https://docs.advantagescope.org/)                                                                         | View recorded/simulated telemetry and field paths          | Visualizations are evidence, not automatic diagnoses            |
-| [Choreo](https://choreo.autos/)                                                                                            | FRC trajectory design and constraints                      | Physical validation and appropriate robot parameters required   |
-| [PathPlanner](https://pathplanner.dev/)                                                                                    | FRC autonomous paths and event logic                       | Check version compatibility with robot libraries                |
-| [Onshape Learning Center](https://learn.onshape.com/)                                                                      | CAD while away from the team shop                          | Manufacturing feedback still matters                            |
-| [GitHub Skills](https://skills.github.com/)                                                                                | Git review and collaboration                               | Transfer exercise to the team's branch policy                   |
+{% tabs %}
+{% tab title="FRC simulation" %}
+Use [WPILib Robot Simulation](https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robot-simulation/introduction.html) to run code without a roboRIO. Start with a supported example and meaningful simulated sensor behavior. A dashboard moving on screen is not evidence that the physics model is accurate.
 
-## Workshop: build and test an autonomous idea without a physical robot
+**Pilot:** test command transitions with a normal completion, timeout and interrupted action. Log state and timestamps. Keep a reproducible launch procedure.
+{% endtab %}
 
-{% stepper %}
-{% step %}
-### Define the mission
+{% tab title="FTC Java practice" %}
+[Beta 8397 virtual\_robot](https://github.com/Beta8397/virtual_robot) is a community 2D simulator for learning FTC-style Java programming. Follow its own setup instructions and supported environment. Use [FTC Docs](https://ftc-docs.firstinspires.org/en/latest/) for the real SDK workflow.
 
-Choose a simple simulated movement and set a clear success condition. Do not assume simulation equals field performance.
-{% endstep %}
+**Pilot:** drive a virtual route with an explicit initial pose, then change the start condition. Record which assumptions the program makes. Do not assume virtual device behavior exactly matches your robot.
+{% endtab %}
 
-{% step %}
-### Set up a simulation project
+{% tab title="CAD & team skills" %}
+Use [FRCDesign](https://frcdesign.org/learning-course/) or [Onshape Learning Center](https://learn.onshape.com/) to make a part and have a teammate review its drawing. Use [GitHub Skills](https://skills.github.com/) for branch and review practice.
 
-Follow the current [WPILib Robot Simulation tutorial](https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robot-simulation/introduction.html). Confirm the code builds and your program has meaningful simulated sensors.
-{% endstep %}
+**Pilot:** a new member follows your setup notes independently and proposes one correction. This tests the team's onboarding process as well as the learner.
+{% endtab %}
+{% endtabs %}
 
-{% step %}
-### Plan and observe
+## Trajectory planning is a separate layer
 
-Use an applicable path-planning tool, or write a simple state sequence. Plot position or state changes in a dashboard or AdvantageScope.
-{% endstep %}
+[Choreo](https://choreo.autos/) provides dynamics-constrained FRC trajectory planning; [PathPlanner](https://pathplanner.dev/) supports its own path and autonomous workflow. Choose an integration your team can maintain. A generated trajectory, simulated controller and physical robot are three different things to validate.
 
-{% step %}
-### Analyze deviations
+| Question                                    | What to save                                                                   |
+| ------------------------------------------- | ------------------------------------------------------------------------------ |
+| Does the routine select the right actions?  | State/command trace                                                            |
+| Does the simulated model follow the target? | Target versus measured pose                                                    |
+| Are robot parameters plausible?             | Dimensions, mass/inertia assumptions, limits and units                         |
+| What remains unmodeled?                     | Traction, latency, battery behavior and mechanism effects relevant to the test |
 
-Ask which assumptions the simulation makes: grip, inertia, sensor latency, battery behavior, and localization. Write down what cannot be validated until hardware is available.
-{% endstep %}
-{% endstepper %}
+## Finish with a handoff
 
-## Other niche off-season exercises
+Keep the code commit, tool versions, initial conditions and one expected result. Name the first supervised hardware test you would run later. If a teammate cannot reproduce the experiment, simplify it before expanding it.
 
-* **CAD:** redesign a standard mounting bracket for two manufacturing methods, then compare cost and assembly.
-* **Strategy:** analyze a past event on [The Blue Alliance](https://www.thebluealliance.com/) and check predictions against match video.
-* **Software:** use [Codex](codex-for-robotics.md) to propose documentation or unit-test improvements on a non-deployment branch.
-* **Outreach:** make an accessible demonstration activity and run it with students unfamiliar with robotics.
+**Next:** [review the resulting logs](debug-with-logs.md) · [plan a robust autonomous routine](../programming/autonomous-planning.md).
 
-{% hint style="info" %}
-Simulation is ideal for practicing architecture, tests, and reasoning. Competition readiness still requires physical system testing and current rule compliance.
-{% endhint %}
+_Last editorial review: November 17, 2026. Follow current publisher documentation for software and season changes._

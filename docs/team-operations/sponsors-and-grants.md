@@ -38,3 +38,9 @@ Adapt the message to your real team, finances, and audience. Do not promise bene
 * [ ] Plan a truthful impact report
 
 Find program-level opportunities through [FIRST](https://www.firstinspires.org/) and research local community foundations. **Do not assume a grant is open or that a team qualifies without checking the current application.**
+
+## Use existing source material
+
+Start with [the funding collection](../resource-library/outreach-sponsors-grants.md) and [KY FIRST grants](https://www.kyfirstrobotics.org/team-grants). Keep source URL, date checked, applicant requirements, budget owner and reporting deadline in the tracker. Treat an old successful application as an example of structure, not proof of current eligibility.
+
+_Editorial review: November 17, 2026._

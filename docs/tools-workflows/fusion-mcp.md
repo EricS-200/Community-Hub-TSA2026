@@ -1,96 +1,115 @@
 ---
 description: >-
-  Connect an AI assistant to a running Autodesk Fusion session, plus advanced
-  alternatives.
-icon: box
+  A concrete connection recipe, a measurable pilot, and a careful comparison of
+  extra tools.
+icon: cube
 ---
 
 # Fusion MCP: local CAD assistant
 
-**The overlooked feature:** Autodesk now provides an official **local Fusion MCP server**, built into the desktop application. You do not need to start with an unofficial community script. It lets an MCP-compatible assistant inspect geometry and perform modeling tasks in a _running_ Fusion session.
+<figure><img src="../.gitbook/assets/cad-automation.svg" alt="Concept mounting plate. Define spacing, hole size and thickness; inspect units, regeneration and clearances before handoff."><figcaption><p>Concept mounting plate. Define spacing, hole size and thickness; inspect units, regeneration and clearances before handoff.</p></figcaption></figure>
 
-**Sources:** [Autodesk MCP overview](https://help.autodesk.com/view/fusion360/ENU/?guid=FMCP-OVERVIEW), [connection walkthrough](https://help.autodesk.com/cloudhelp/ENU/ADSKMCP-FusionDesktopMcp/files/ADSKMCP_FusionDesktopMcp_connecting_to_the_fusion_mcp_server_html.html), [official integration configuration](https://github.com/Autodesk/ai-integrations/blob/main/fusion/local-mcp-server/README.md).
+**Use this when:** you repeatedly inspect or edit parameters in an Autodesk Fusion desktop design. Start with Autodesk's built-in server; add community tooling only for a capability the official connection does not expose.
 
-## Basic setup: Autodesk's local server
+## Connect the official local server
 
 {% stepper %}
 {% step %}
-### Open desktop Fusion
+### Prepare a test design
 
-Install or update Autodesk Fusion and launch the desktop app. The local server needs a running Fusion session.
+Launch current Fusion desktop and save a disposable copy. The local server needs Fusion running on the machine your client can reach.
 {% endstep %}
 
 {% step %}
-### Enable the local MCP
+### Enable the server and copy its address
 
-Go to **Preferences → General → API**. Enable **Fusion MCP Server** under scripting/programming preferences. Note the endpoint shown in Fusion; the documented default is `http://127.0.0.1:27182/mcp`.
+Open **Preferences → General → API**, enable **Fusion MCP Server**, and copy the endpoint shown there. Autodesk documents `http://127.0.0.1:27182/mcp` as the default. Your displayed port takes precedence.
 {% endstep %}
 
 {% step %}
-### Point your client at Fusion
+### Configure your client
 
-In an MCP-compatible client that accepts streamable HTTP, add a server using Fusion's local URL. For example, Cursor's MCP settings can use the following:
+{% tabs %}
+{% tab title="Cursor" %}
+In **Settings → Cursor Settings → Tools & MCPs**, add this entry to the MCP configuration:
 
+{% code collapsedlinecount="10" %}
 ```json
 {
   "mcpServers": {
-    "fusion": {
-      "url": "http://127.0.0.1:27182/mcp"
-    }
+    "fusion": { "url": "http://127.0.0.1:27182/mcp" }
   }
 }
 ```
+{% endcode %}
+{% endtab %}
 
-Use the port shown in your Fusion preferences if it differs.
+{% tab title="Claude Desktop" %}
+Use the `fusion_mcpb.mcpb` bundle from the release linked in [Autodesk's integration repository](https://github.com/Autodesk/ai-integrations/blob/main/fusion/local-mcp-server/README.md). Supply the port shown in Fusion when prompted.
+{% endtab %}
+
+{% tab title="Codex CLI" %}
+Codex accepts HTTP MCP servers. With Fusion open, add the local endpoint:
+
+{% code collapsedlinecount="10" %}
+```bash
+codex mcp add fusion --url http://127.0.0.1:27182/mcp
+codex mcp list
+```
+{% endcode %}
+
+This combines Autodesk's endpoint with [Codex's documented HTTP connection syntax](https://learn.chatgpt.com/docs/extend/mcp?surface=cli). It is a configuration example, not a hardware-tested certification. Run the client on the same host; a cloud session or WSL environment has a different meaning of `127.0.0.1`.
+{% endtab %}
+{% endtabs %}
 {% endstep %}
 
 {% step %}
-### Test with a disposable design
+### Verify the target before changing it
 
-Ask the assistant to identify the active document or create a simple, specified test part. Inspect the geometry and feature history before allowing more actions.
+Ask: “Identify the active document, units and available inspection tools. Do not change geometry.” Compare the response to Fusion. If it is wrong, stop and fix the connection.
 {% endstep %}
 {% endstepper %}
 
-{% hint style="info" %}
-Autodesk documents a Claude Desktop bundle and Cursor configuration in its [official repository](https://github.com/Autodesk/ai-integrations/blob/main/fusion/local-mcp-server/README.md). The exact setup differs by AI client; a browser chat is not automatically connected to a local desktop endpoint.
-{% endhint %}
+Connection details: [Autodesk integration README](https://github.com/Autodesk/ai-integrations/blob/main/fusion/local-mcp-server/README.md) and [Fusion MCP help](https://help.autodesk.com/view/fusion360/ENU/?guid=FMCP-OVERVIEW).
 
-## Real robot-team applications
+## A first pilot: a family of mounting plates
 
-| Task                        | Why MCP may help                               | What a human must verify                       |
-| --------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| Batch-edit named parameters | Faster iteration through dimensional variants  | Dimensions, dependencies, feature regeneration |
-| Inspect a complex model     | Locate components, properties, or design state | Correct active document and context            |
-| Create a first-pass fixture | Reduce repetitive CAD setup                    | Fit, clearances, manufacturing feasibility     |
-| Produce a repeatable tool   | Use small operations as building blocks        | Design intent, safety, compatibility           |
+Give the assistant one precise job:
 
-## Local Fusion vs Fusion Data MCP
+> In this test copy, inspect the existing named parameters. Propose a change to the hole spacing parameter from its current value to 30 mm. Explain which features depend on it. Wait for review before applying. After the edit, report regeneration errors and resulting dimensions. Do not export or overwrite the production design.
 
-|                         | Local Fusion MCP                      | Fusion Data MCP                        |
-| ----------------------- | ------------------------------------- | -------------------------------------- |
-| Main purpose            | Live modeling and document inspection | Cloud project and file/data management |
-| Runs where              | Same machine as Fusion                | Autodesk cloud                         |
-| Fusion desktop required | Yes                                   | No                                     |
-| Auth                    | Local connection                      | Autodesk account OAuth                 |
+**Accept the pilot only if:** the parameter exists, units are explicit, the pattern regenerates, all intended hole locations change, and a designer verifies edge distance and fit. The 30 mm value is an exercise input, not a robot standard.
 
-See [Autodesk's comparison](https://help.autodesk.com/view/fusion360/ENU/?guid=FMCP-OVERVIEW). These are **different servers**, not simply “basic” and “premium” versions of the same connector.
+## Local modeling, cloud data, and extra tools
 
-## Advanced and third-party options
+{% tabs %}
+{% tab title="Official local MCP" %}
+Works with the running Fusion design. Best first experiment for geometry inspection and modeling. Query the actual available tools before promising an operation.
+{% endtab %}
 
-* [Autodesk: building Fusion add-ins with MCP](https://www.autodesk.com/products/fusion-360/blog/build-your-own-fusion-add-ins-with-the-fusion-mcp/) — create and test custom automation that uses Fusion's own API.
-* [Autodesk University: Fusion, Claude, and MCP 101](https://www.autodesk.com/autodesk-university/class/AI-Connected-Workflows-Fusion-Claude-and-MCP-101-2026) — deeper architectural walkthrough.
-* [faust-machines/fusion360-mcp-server](https://github.com/faust-machines/fusion360-mcp-server) — a **third-party experimental** add-in/server with additional tools, including exports. Review installation requirements, repo maintenance, and security before using.
-* [Poyraxx/fusion-advanced-mcp-server](https://github.com/Poyraxx/fusion-advanced-mcp-server) — another **unofficial advanced** approach. Treat public code execution and broad API access as high-trust permissions.
+{% tab title="Fusion Data MCP" %}
+Autodesk's separate cloud-data connection targets authorized project/file data. It does not replace the live desktop modeling server. Use the [official overview](https://help.autodesk.com/view/fusion360/ENU/?guid=FMCP-OVERVIEW) to choose the relevant service.
+{% endtab %}
 
-{% hint style="danger" %}
-Do not run an unreviewed third-party CAD server on a school-managed or shared computer. Make a copy of the design first. Automated CAD is not verification of tolerances, structural safety, or manufacturability.
-{% endhint %}
+{% tab title="Community extensions" %}
+[faust-machines/fusion360-mcp-server](https://github.com/faust-machines/fusion360-mcp-server) documents a separate add-in plus Python/stdio bridge, with modeling, inspection and export tools. [Poyraxx/fusion-advanced-mcp-server](https://github.com/Poyraxx/fusion-advanced-mcp-server) documents modeling and Electronics workflows, exports, and arbitrary API execution. These are **third-party projects**, with different installation paths and trust requirements.
 
-## Troubleshooting
+Do not point their launcher at Autodesk's port: they are different implementations. Pin a reviewed revision, inspect the tool list and installation instructions, and try one disposable document. Keep local services on loopback; broad code-execution tools deserve explicit review.
+{% endtab %}
+{% endtabs %}
 
-* **No tools:** Fusion may be closed, or MCP disabled under Preferences → General → API.
-* **Cannot connect:** verify loopback address and port; the client and Fusion must be on the appropriate machine/network context.
-* **Commands do the wrong thing:** inspect the selected document and ask for an explicit, reversible operation.
-* **Port changed:** update the client's MCP URL to match.
+<details>
 
-[Autodesk troubleshooting guide](https://help.autodesk.com/cloudhelp/ENU/ADSKMCP-FusionDesktopMcp/files/ADSKMCP_FusionDesktopMcp_troubleshooting_html.html).
+<summary>Connection troubleshooting</summary>
+
+* **No tools:** check Fusion is running and MCP is enabled.
+* **Connection fails:** compare the complete endpoint, port, `/mcp` path and transport with the publisher's instructions.
+* **Wrong model:** verify the active document and component context before writes.
+* **Browser URL shows an error:** a normal browser request is not an MCP protocol handshake. Use the client's connection status and tool discovery.
+* **Persistent handshake errors:** record Fusion/client versions and use [Autodesk's troubleshooting page](https://help.autodesk.com/cloudhelp/ENU/ADSKMCP-FusionDesktopMcp/files/ADSKMCP_FusionDesktopMcp_troubleshooting_html.html). Do not disable security controls to force a connection.
+
+</details>
+
+**Next:** [Compare Onshape FeatureScript MCP](onshape-mcp.md) or [review the design evidence](../cad-and-design/design-review.md).
+
+_Last editorial review: November 17, 2026. Follow current publisher documentation for software and season changes._

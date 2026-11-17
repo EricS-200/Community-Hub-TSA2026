@@ -13,6 +13,7 @@ Autonomous routines should be **predictable and measurable** before they become 
 
 ## Example state sequence
 
+{% code collapsedlinecount="10" %}
 ```mermaid
 stateDiagram-v2
     [*] --> Initialize
@@ -23,6 +24,7 @@ stateDiagram-v2
     Abort --> Finish
     Finish --> [*]
 ```
+{% endcode %}
 
 ## A useful test log
 
@@ -35,3 +37,11 @@ stateDiagram-v2
 Do not invent success rates. Record real runs and publish methodology alongside performance claims.
 
 Further reading: [WPILib](https://docs.wpilib.org/en/stable/) and [PhotonVision](https://docs.photonvision.org/en/latest/).
+
+## Choose the tool after the failure model
+
+![Concept route with an obstacle. Generated paths still need explicit starting conditions, tolerances and abort behavior.](../.gitbook/assets/simulation.svg) For FRC, compare [PathPlanner](https://pathplanner.dev/) and [Choreo](https://choreo.autos/). For FTC, use [Road Runner’s current documentation](https://rr.brott.dev/docs/). A planner is not a replacement for state handling, pose validity or timeouts.
+
+**Add to the test:** interrupted sequence, invalid starting pose, timeout, and a failed prerequisite action. Record the expected safe response to each before expanding the route. Use [logs](../tools-workflows/debug-with-logs.md) to compare intent with behavior.
+
+_Editorial review: November 17, 2026._

@@ -59,3 +59,17 @@ Make the simplest viable prototype, measure its performance, then update the CAD
 {% hint style="info" %}
 **Make decisions visible.** A short design note explaining _why_ you chose a geometry is more useful to next year's team than an unlabeled model.
 {% endhint %}
+
+## See it, then make it
+
+<figure><img src="../.gitbook/assets/cad-automation.svg" alt="Concept mounting plate with inputs and review checks."><figcaption><p>Concept mounting plate with inputs and review checks.</p></figcaption></figure>
+
+### Onshape’s sketch geometry introduction
+
+Official English lesson. Pair it with the FRCDesign course rather than learning only from isolated clips.
+
+{% embed url="https://www.youtube.com/watch?v=xvn9hD7KMVs" %}
+
+[Watch at YouTube](https://www.youtube.com/watch?v=xvn9hD7KMVs) · **Use it:** Produce one intentional sketch and explain its constraints.
+
+_Editorial review: November 17, 2026._

@@ -22,3 +22,9 @@ A student should be able to contribute meaningfully without already knowing a pr
 Rotate opportunities, pair experienced members with beginners, and use clear written task definitions.
 
 Read the current [FIRST program guidance](https://www.firstinspires.org/) and adopt policies appropriate to your organization.
+
+## Make participation observable
+
+During a meeting, notice who gets hands-on work, who explains decisions and who is waiting. Offer written tasks, pair practice and a low-cost/offline route through [the practice collection](../tools-workflows/practice-without-robot.md). Use your organization’s current safeguarding procedures and official program guidance for supervision and reporting.
+
+_Editorial review: November 17, 2026._

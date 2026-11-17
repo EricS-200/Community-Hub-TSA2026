@@ -58,3 +58,9 @@ Version control, debugging, code review, and reproducible testing transfer betwe
 * [FTC Docs](https://ftc-docs.firstinspires.org/)
 * [GitHub pull requests](https://docs.github.com/en/pull-requests)
 * [PhotonVision documentation](https://docs.photonvision.org/en/latest/) — check compatibility with your robot environment before adopting.
+
+## Practice away from hardware
+
+![Illustrative offline route. Simulation helps test logic and assumptions before supervised hardware testing.](../.gitbook/assets/simulation.svg) [Choose a simulation exercise](../tools-workflows/practice-without-robot.md) and [inspect its evidence](../tools-workflows/debug-with-logs.md). The goal is a reproducible experiment, not just a moving animation.
+
+_Editorial review: November 17, 2026._

@@ -1,61 +1,77 @@
 ---
-description: Make this a genuinely useful, community-maintained robotics library.
+description: Recommend something worth a student’s time, then verify the published result.
+icon: pen-to-square
 ---
 
 # Contribute to this library
 
-The goal is not to collect links indiscriminately. It is to keep a small set of accurate, teachable resources that people can use.
+## What earns a place here
 
-## What makes a good contribution?
+A resource should teach something particularly well, reveal an overlooked capability, or solve a specific recurring problem. We prefer the original creator and explain when to use it. We do not copy full courses or publish unsupported performance claims.
 
-* Fix a broken link or outdated claim.
-* Add a tested tutorial that answers a recurring team question.
-* Share a well-documented student project with permission.
-* Improve accessibility, navigation, or clarity.
-* Flag material that conflicts with current official guidance.
+## Contribution brief
 
-## Editing workflow
+```
+Audience and prerequisite:
+Problem this solves:
+Resource URL and creator:
+Why this is better than a generic search result:
+Official / community / archived / experimental:
+Version, language and date checked:
+Small exercise and expected evidence:
+Link / embed check and fallback:
+Licensing or attribution needs:
+```
+
+## Publish a small, reviewable change
 
 {% stepper %}
 {% step %}
-### Identify a need
+### Propose the source and use
 
-Describe the audience, the problem, and the specific improvement. For technical guidance, link to authoritative references.
+Use the brief above. Identify what should be replaced, added or corrected and cite the primary source for technical claims.
 {% endstep %}
 
 {% step %}
-### Propose an edit
+### Edit through the shared workflow
 
-Open the [GitHub documentation repository](https://github.com/EricS-200/Community-Hub-TSA2026) and submit a pull request to the documentation files, or ask a site editor to open a GitBook change request.
+Submit a focused change to the `docs` content in the [GitHub repository](https://github.com/EricS-200/Community-Hub-TSA2026), or use a GitBook change request. Preserve `.gitbook.yaml`, the summary/navigation and asset references. Coordinate simultaneous edits so Git Sync does not overwrite someone’s work.
 {% endstep %}
 
 {% step %}
-### Review for accuracy
+### Review the learning value
 
-A reviewer checks correctness, current-season compatibility, safety statements, links, and writing quality.
+Check the source, version, language, mobile readability, descriptive link labels, alt text and video fallback. Verify the proposed exercise teaches a useful decision rather than reproducing an existing tutorial.
 {% endstep %}
 
 {% step %}
-### Merge and verify
+### Publish and check the actual page
 
-After approval, merge the change and confirm the published page renders as expected. Git Sync connects the site to the repository.
+Open the published link, exercise its tabs/cards/expanders and test the embed. Confirm the associated GitHub export succeeds. Keep a dated review note for changing resources.
 {% endstep %}
 {% endstepper %}
 
-## Editorial standards
+## Accessibility and media
 
-| Do                                                   | Avoid                                             |
-| ---------------------------------------------------- | ------------------------------------------------- |
-| State assumptions and the date/version when relevant | Making evergreen claims about changing game rules |
-| Cite official manuals for rules                      | Treating a community post as authoritative        |
-| Use brief, specific instructions                     | Buzzwords and generic encouragement               |
-| Give learning objectives and a verification step     | Posting untested instructions                     |
-| Credit creators and respect licenses                 | Reposting copyrighted guides in full              |
+Keep the main explanation in text. Use original or appropriately licensed images with meaningful alt text, captions where needed and creator credit. Label video language and archival status. Do not autoplay media; provide a direct source link and written context.
 
-{% hint style="info" %}
-This is a demonstration library. Repository permissions, reviewer assignments, and contribution policies should be confirmed by the KY FIRST site maintainers before inviting public submissions.
-{% endhint %}
+This hub’s six engineering illustrations are original concept graphics. Geometry, trajectories and telemetry in those images are illustrative, not manufacturing instructions or measured robot results.
 
-## Suggested new topics
+<details>
 
-Pit organization, inspection workflows, drivetrain fundamentals, driver practice, accessibility in team recruitment, grant reporting, media permissions, and multilingual onboarding would all be useful next contributions.
+<summary>Maintainer review checklist</summary>
+
+* Resource opens and matches the stated purpose.
+* Technical setup is anchored to the publisher's current instructions.
+* Internal links still point to the same page IDs or valid paths.
+* Cards, tabs and expandable sections work on a narrow screen.
+* Image information is also available in text.
+* Video title/creator and fallback match the embed.
+* GitBook stays on Basic and GitHub sync remains active.
+* No participant personal information or credentials are exposed.
+
+</details>
+
+**Next:** [Make the maintenance loop last](tools-workflows/maintain-team-docs.md).
+
+_Last editorial review: November 17, 2026. Follow current publisher documentation for software and season changes._

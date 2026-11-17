@@ -1,41 +1,46 @@
 ---
-description: CAD courses, robot-focused design references, and build-process videos.
+description: >-
+  Learn one CAD workflow well, reuse trusted parts, and review what the model
+  assumes.
+icon: cubes
 ---
 
 # CAD & mechanical design
 
-**For:** CAD beginners, design leads, and fabrication teams. These sources teach the tools and the reasoning; use your team's manufacturing capabilities to choose what to make.
+<figure><img src="../.gitbook/assets/cad-automation.svg" alt="A concept mounting plate. A useful CAD handoff includes inputs, geometric checks and a drawing with design intent."><figcaption><p>A concept mounting plate. A useful CAD handoff includes inputs, geometric checks and a drawing with design intent.</p></figcaption></figure>
 
-## Recommended courses
+## The first course to open
 
-| Resource                                                                                                                      | Format               | Why it belongs here                                         |
-| ----------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------- |
-| [FRCDesign — learning course](https://frcdesign.org/learning-course/)                                                         | Structured course    | Onshape fundamentals applied to FRC geometry and assemblies |
-| [FRCDesign — design handbook](https://www.frcdesign.org/design-handbook/)                                                     | Reference            | Robot-design methods beyond a single CAD package            |
-| [Onshape — FIRST Robotics](https://www.onshape.com/en/education/first-robotics)                                               | Official program hub | CAD access, robotics resources, community models            |
-| [Onshape Intro to CAD](https://learn.onshape.com/learning-paths/intro-to-cad)                                                 | Interactive course   | Guided foundational modeling                                |
-| [Onshape student resources](https://www.onshape.com/en/education/student-resources)                                           | Videos and exercises | Self-paced practice                                         |
-| [FRCDesign part library guidance](https://www.frcdesign.org/learning-course/course-setup/required-course-tools/part-library/) | Tool guide           | Using common FRC parts in CAD                               |
-| [Onshape for FIRST teams guide](https://www.onshape.com/global-assets/documents/first-robotics/onshapeforfirstteams.pdf)      | PDF                  | Team setup and collaboration                                |
+[**FRCDesign learning course**](https://frcdesign.org/learning-course/) is the strongest starting point here for students who want Onshape taught through robotics work. Follow its sequence instead of jumping directly to a complex robot assembly.
 
-## See the workflow
+Pair it with [Onshape Intro to CAD](https://learn.onshape.com/learning-paths/intro-to-cad) when you need a structured tool introduction. The [Onshape FIRST program hub](https://www.onshape.com/en/education/first-robotics) supplies account and robotics-program context.
 
-**Sketching fundamentals:**
+### Watch: Onshape — Basic Sketch Geometry
 
-{% embed url="https://www.youtube.com/watch?v=FIikVGmQLu0" %}
+Official English sketching lesson.
 
-**Assemblies and drawings:**
+{% embed url="https://www.youtube.com/watch?v=xvn9hD7KMVs" %}
 
-{% embed url="https://www.youtube.com/watch?v=7oipFYGertc" %}
+[Watch at YouTube](https://www.youtube.com/watch?v=xvn9hD7KMVs) · **Use it:** Explain which degrees of freedom remain in a sketch you made; then dimension it intentionally.
 
-These are community videos; supplement them with the linked official Onshape training.
+## Resources that prevent avoidable work
 
-## Design beyond CAD
+<table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><i class="fa-book">:book:</i></td><td><h3><a href="https://www.frcdesign.org/design-handbook/">FRCDesign design handbook</a></h3></td><td>Look up engineering decisions beyond CAD button sequences.</td></tr><tr><td><i class="fa-cubes">:cubes:</i></td><td><h3><a href="https://www.frcdesign.org/learning-course/course-setup/required-course-tools/part-library/">Part-library workflow</a></h3></td><td>Use common FRC components instead of redrawing vendor parts.</td></tr><tr><td><i class="fa-gears">:gears:</i></td><td><h3><a href="https://gm0.org/en/latest/docs/common-mechanisms/">GM0 mechanisms</a></h3></td><td>Compare FTC mechanisms and design tradeoffs.</td></tr><tr><td><i class="fa-graduation-cap">:graduation-cap:</i></td><td><h3><a href="https://www.onshape.com/en/education/student-resources">Onshape student resources</a></h3></td><td>Guided exercises and learning material for independent practice.</td></tr></tbody></table>
 
-| Reference                                                                                                                          | Use                                                   |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [GM0 common mechanisms](https://gm0.org/en/latest/docs/common-mechanisms/)                                                         | Inspect FTC mechanical patterns and tradeoffs         |
-| [FIRST FRC technical resources](https://www.firstinspires.org/resources/library/frc/technical-resources)                           | Officially curated mechanical and design references   |
-| [Onshape CAD collaboration webinar](https://www.onshape.com/en/resource-center/videos/collaborate-with-cad-using-onshape-in-first) | How teams collaborate in a shared cloud CAD workspace |
+## When to introduce automation
 
-**Use with:** [Your first CAD part](../cad-and-design/first-cad-part.md), [Design review checklist](../cad-and-design/design-review.md), and [From model to prototype](../cad-and-design/prototyping.md).
+{% tabs %}
+{% tab title="Fusion local MCP" %}
+Choose [Fusion MCP](../tools-workflows/fusion-mcp.md) for a pilot against a running desktop design. Begin with document inspection and one named parameter change.
+{% endtab %}
+
+{% tab title="Onshape FeatureScript" %}
+Choose [Onshape FeatureScript MCP](../tools-workflows/onshape-mcp.md) for a reusable custom feature. Define inputs and invalid cases before generating code.
+{% endtab %}
+{% endtabs %}
+
+**Keep after a CAD session:** the model/version link, one decision record, a manufacturing drawing where needed, and the unanswered fit or load question. A library model is not proof that the ordered part matches the installed revision.
+
+**Practice:** [make a plate](../cad-and-design/first-cad-part.md) · [review it](../cad-and-design/design-review.md) · [test a prototype](../cad-and-design/prototyping.md).
+
+_Last editorial review: November 17, 2026. Follow current publisher documentation for software and season changes._

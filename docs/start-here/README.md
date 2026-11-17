@@ -27,7 +27,7 @@ You do not need to know everything before you can contribute. Select your progra
 | **FIRST Tech Challenge (FTC)**       | Design, build, and code a student-built robot | Basic mechanisms, drivetrain control, and sensors     |
 | **FIRST Robotics Competition (FRC)** | Large-scale collaborative robot development   | Safety, subsystem architecture, fabrication, and code |
 
-Official entry points: [FIRST LEGO League](https://www.firstinspires.org/robotics/fll), [FIRST Tech Challenge](https://www.firstinspires.org/robotics/ftc), [FIRST Robotics Competition](https://www.firstinspires.org/robotics/frc).
+Official entry points: [FIRST LEGO League](https://www.firstinspires.org/programs/fll/), [FIRST Tech Challenge](https://www.firstinspires.org/programs/ftc/), [FIRST Robotics Competition](https://www.firstinspires.org/programs/frc/).
 
 {% hint style="warning" %}
 **Season materials change.** Treat the current official game manual, team updates, inspection requirements, and safety guidance as the source of truth. Do not use an older tutorial as a substitute for current rules.
@@ -70,3 +70,11 @@ Ask someone else to reproduce or critique your work. Record the change you made 
 * **Documentation:** Turn one thing your team explains repeatedly into a page with screenshots or a checklist.
 
 Continue with [Programming](../programming/), [CAD & design](../cad-and-design/), or [Team operations](../team-operations/).
+
+## Pick a role, then a real artifact
+
+<table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><i class="fa-code">:code:</i></td><td><h3><a href="../resource-library/frc-software-controls.md">Software</a></h3></td><td>Build and explain a supported example before adding a feature.</td></tr><tr><td><i class="fa-cubes">:cubes:</i></td><td><h3><a href="../resource-library/cad-mechanical-design.md">CAD</a></h3></td><td>Follow one course and make a reviewable part.</td></tr><tr><td><i class="fa-users">:users:</i></td><td><h3><a href="../resource-library/outreach-sponsors-grants.md">Team &#x26; outreach</a></h3></td><td>Plan an activity with a partner and an observable outcome.</td></tr></tbody></table>
+
+**FTC and FLL:** use the program-specific paths above; the FRC software track is not a universal robot setup.
+
+_Editorial review: November 17, 2026._

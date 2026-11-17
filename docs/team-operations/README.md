@@ -54,3 +54,17 @@ Follow up with partners, log measurable impact, and store reusable materials in 
 ## Guiding principle
 
 **Documentation should lower the cost of joining the team.** If a new member cannot understand a process without finding one specific veteran, write it down and improve the process.
+
+## A partner-led outreach workflow
+
+<figure><img src="../.gitbook/assets/outreach.svg" alt="Outreach planning: access, activity and evidence."><figcaption><p>Outreach planning: access, activity and evidence.</p></figcaption></figure>
+
+### Watch: Inventive Outreach and Your Team
+
+A community talk by Sarah Heimlich, linked from FIRST’s management resources.
+
+{% embed url="https://www.youtube.com/watch?v=tw8kkre6hK4" %}
+
+[Watch at YouTube](https://www.youtube.com/watch?v=tw8kkre6hK4) · **Use it:** Adapt one idea to an actual partner and write the evidence you would collect.
+
+_Editorial review: November 17, 2026._

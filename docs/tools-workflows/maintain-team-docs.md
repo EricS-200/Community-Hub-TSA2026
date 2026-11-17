@@ -51,3 +51,11 @@ Automated “fixes” to documentation should be proposals, not unreviewed publi
 ## Pilot with one page
 
 Choose a tutorial students repeatedly ask about. Give it an owner, identify its authoritative source, test the steps, and ask a novice to follow it. Record their confusion and update the page. The quality of that loop matters more than the number of pages.
+
+## Keep media and navigation portable
+
+Prefer GitBook-native blocks and synced assets over custom scripts. Keep captions, alt text and a direct link beside every embed. After a merge, inspect both the public page and the Git Sync export status. A successful content merge and a successful repository export are separate checks.
+
+For this hub, the content lives under `docs` in the connected repository. Preserve the existing sync configuration; do not reconnect or switch branches as part of routine editing. The publishing workflow uses GitBook Basic content features and does not require a site-plan upgrade.
+
+_Editorial review: November 17, 2026._

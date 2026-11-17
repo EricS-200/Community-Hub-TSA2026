@@ -27,3 +27,9 @@ Prototype materials rarely match final-material strength, wear, or thermal behav
 Link to [Design review checklist](design-review.md) and preserve revision history.
 
 Further learning: [Onshape Learning Center](https://learn.onshape.com/).
+
+## Use a test that can change the decision
+
+Pair the experiment with [FRCDesign’s handbook](https://www.frcdesign.org/design-handbook/) or [GM0’s mechanism references](https://gm0.org/en/latest/docs/common-mechanisms/). Write the result that would make the team reject the current design before collecting data. Preserve failed prototypes in the design log so next year’s students do not repeat them without context.
+
+_Editorial review: November 17, 2026._

@@ -22,4 +22,10 @@ Observe status indicators, logs, sensor readings, and commanded behavior from a 
 
 **Record:** date, subsystem, inspector, observed issue, corrective action, and retest result.
 
-Read: [FRC program resources](https://www.firstinspires.org/robotics/frc), [FTC Docs](https://ftc-docs.firstinspires.org/), and [REV Docs](https://docs.revrobotics.com/).
+Read: [FRC program resources](https://www.firstinspires.org/programs/frc/), [FTC Docs](https://ftc-docs.firstinspires.org/), and [REV Docs](https://docs.revrobotics.com/).
+
+## Make this checklist program-specific
+
+Use current [FIRST FRC technical resources](https://www.firstinspires.org/resources/library/frc/technical-resources) or [FTC team resources](https://ftc-resources.firstinspires.org/ftc/team), then the relevant manufacturer’s wiring instructions. Have the responsible mentor map each checklist item to the applicable inspection requirement. Record the exact component/port label and a photo for any corrective action.
+
+_Editorial review: November 17, 2026._
