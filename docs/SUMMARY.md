@@ -2,6 +2,9 @@
 
 * [KY FIRST Resource Hub](README.md)
 * [Resource library](resource-library/README.md)
+  * [Rules, events & results](resource-library/rules-events-results.md)
+  * [Robotics tools & downloads](resource-library/robotics-tools-downloads.md)
+  * [Training, community & funding](resource-library/training-community-funding.md)
   * [Watch & learn](resource-library/watch-and-learn.md)
   * [FRC: software & controls](resource-library/frc-software-controls.md)
   * [FTC: build & code](resource-library/ftc-build-code.md)

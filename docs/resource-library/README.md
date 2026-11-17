@@ -7,6 +7,14 @@ icon: book-open
 
 **Choose a collection by the decision you need to make.** Official docs anchor setup and rules; experienced teams and educators supply the worked examples. Each collection tells you where to start and what to produce.
 
+## External link directories
+
+* [Rules, events & results](rules-events-results.md)
+* [Robotics tools & downloads](robotics-tools-downloads.md)
+* [Training, community & funding](training-community-funding.md)
+
+## Curated collections
+
 <table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><i class="fa-code">:code:</i></td><td><h3><a href="frc-software-controls.md">FRC software &#x26; controls</a></h3></td><td>From a supported project to logs, autonomy, vision and controls.</td></tr><tr><td><i class="fa-microchip">:microchip:</i></td><td><h3><a href="ftc-build-code.md">FTC build &#x26; code</a></h3></td><td>FTC Docs, GM0, starter code, telemetry and simulation.</td></tr><tr><td><i class="fa-puzzle-piece">:puzzle-piece:</i></td><td><h3><a href="fll-lego-learning.md">FLL &#x26; LEGO learning</a></h3></td><td>SPIKE lessons, robot repeatability and student-owned research.</td></tr><tr><td><i class="fa-cubes">:cubes:</i></td><td><h3><a href="cad-mechanical-design.md">CAD &#x26; mechanical design</a></h3></td><td>A robotics CAD course, part libraries and design evidence.</td></tr><tr><td><i class="fa-chart-simple">:chart-simple:</i></td><td><h3><a href="strategy-scouting-data.md">Strategy, scouting &#x26; data</a></h3></td><td>Make better decisions from match observations and public data.</td></tr><tr><td><i class="fa-handshake">:handshake:</i></td><td><h3><a href="outreach-sponsors-grants.md">Outreach, sponsors &#x26; grants</a></h3></td><td>Partner-led activities and credible funding source pages.</td></tr><tr><td><i class="fa-map-pin">:map-pin:</i></td><td><h3><a href="kentucky-teams-season.md">Kentucky teams &#x26; season</a></h3></td><td>Local program links, events and grant directories.</td></tr><tr><td><i class="fa-video">:video:</i></td><td><h3><a href="watch-and-learn.md">Watch &#x26; learn</a></h3></td><td>Curated videos with creator credit and a practical viewing task.</td></tr></tbody></table>
 
 ## When you already know the basics

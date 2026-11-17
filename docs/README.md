@@ -11,6 +11,8 @@ icon: house
 
 **A robotics education hub for Kentucky students, mentors, and coaches.** Start with a proven course, then use the field notes and small experiments here to turn learning into team capability.
 
+Looking for a specific website? [Browse the external link directories](resource-library/#external-link-directories).
+
 ## What are you working on?
 
 <table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><i class="fa-compass">:compass:</i></td><td><h3><a href="start-here/">Join a team</a></h3></td><td>Choose an FRC, FTC or FLL learning path and a first contribution.</td></tr><tr><td><i class="fa-book-open">:book-open:</i></td><td><h3><a href="resource-library/">Find a great resource</a></h3></td><td>A selective library of courses, technical references and local support.</td></tr><tr><td><i class="fa-screwdriver-wrench">:screwdriver-wrench:</i></td><td><h3><a href="tools-workflows/">Solve a harder problem</a></h3></td><td>CAD MCPs, Codex, telemetry, replay and simulation.</td></tr><tr><td><i class="fa-video">:video:</i></td><td><h3><a href="resource-library/watch-and-learn.md">Watch with a purpose</a></h3></td><td>Verified videos paired with a question and a next action.</td></tr><tr><td><i class="fa-users">:users:</i></td><td><h3><a href="team-operations/">Run a stronger team</a></h3></td><td>Outreach, sponsorship, onboarding and knowledge transfer.</td></tr><tr><td><i class="fa-map-pin">:map-pin:</i></td><td><h3><a href="resource-library/kentucky-teams-season.md">Connect in Kentucky</a></h3></td><td>Program partners, local events and funding source pages.</td></tr></tbody></table>
