@@ -4,6 +4,16 @@ description: Practical CAD from sketches to team-ready models.
 
 # CAD & design
 
+## Recommended CAD courses and lesser-known tools
+
+* [**CAD & mechanical design**](../resource-library/cad-mechanical-design.md) — FRCDesign, Onshape courses, part libraries, and videos.
+* [**Fusion MCP: local CAD assistant**](../tools-workflows/fusion-mcp.md) — connect a running Fusion session to a compatible AI client.
+* [**Onshape FeatureScript MCP**](../tools-workflows/onshape-mcp.md) — use an assistant to develop reusable parametric CAD features.
+
+Start with a structured course; use the exercises below as checks on understanding.
+
+***
+
 A CAD model is not finished when it looks right. It is finished when teammates understand what it does, how it mounts, what it costs, and how it can be built.
 
 ## Start with the design question

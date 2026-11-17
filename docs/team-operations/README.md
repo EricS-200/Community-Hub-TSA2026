@@ -5,6 +5,16 @@ icon: users
 
 # Team operations
 
+## Existing resources worth using
+
+* [Outreach, sponsors & grants](../resource-library/outreach-sponsors-grants.md) — official FIRST resources, funding directories, Kentucky grants, and an outreach talk.
+* [Kentucky teams & season links](../resource-library/kentucky-teams-season.md) — maintained local sources for events and program support.
+* [Video learning library](../resource-library/watch-and-learn.md) — outreach and team-management video sources.
+
+The notes below are lightweight planning aids; the linked sources provide the more complete curriculum and official details.
+
+***
+
 Strong teams are built on repeatable habits: clear responsibilities, safe practices, student ownership, funding plans, and relationships that last longer than a season.
 
 ## Run the team as a learning environment

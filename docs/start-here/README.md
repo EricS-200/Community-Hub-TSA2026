@@ -5,6 +5,18 @@ icon: compass
 
 # Start here
 
+## Start with existing learning materials
+
+| Program | Recommended path                                                                                                                                   |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| FRC     | [FRC software & controls](../resource-library/frc-software-controls.md) and [FRCDesign CAD learning](../resource-library/cad-mechanical-design.md) |
+| FTC     | [FTC build & code](../resource-library/ftc-build-code.md), including official docs and Game Manual 0                                               |
+| FLL     | [FLL & LEGO learning](../resource-library/fll-lego-learning.md), including SPIKE videos and coach resources                                        |
+
+Prefer a full external course for teaching, and use the short exercises below for practice. [Browse videos](../resource-library/watch-and-learn.md).
+
+***
+
 You do not need to know everything before you can contribute. Select your program, then complete a small project with a clear test.
 
 ## Which FIRST program?

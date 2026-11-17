@@ -5,6 +5,17 @@ icon: code
 
 # Programming
 
+## Best external starting points
+
+* [**FRC software & controls**](../resource-library/frc-software-controls.md) — WPILib, simulation, PathPlanner, PhotonVision, and organized courses.
+* [**FTC build & code**](../resource-library/ftc-build-code.md) — official SDK, Game Manual 0, and recorded introductions.
+* [**Codex for robotics code**](../tools-workflows/codex-for-robotics.md) — using an AI coding agent with review and tests.
+* [**Underused robotics tools**](../tools-workflows/underused-robotics-tools.md) — logging, replay, dashboards, and characterization.
+
+The rest of this page is a short orientation, not a replacement for those lessons.
+
+***
+
 Good robot software is understandable under pressure. It separates responsibilities, handles failure safely, and can be tested before the next match.
 
 ## Choose your environment

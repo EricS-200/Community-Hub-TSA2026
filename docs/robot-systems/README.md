@@ -5,6 +5,17 @@ icon: wrench
 
 # Robot systems
 
+## External technical references
+
+* [FRC WPILib & robot controls](../resource-library/frc-software-controls.md)
+* [FTC hardware and mechanisms](../resource-library/ftc-build-code.md)
+* [AdvantageScope, SysId, and diagnostic tools](../tools-workflows/underused-robotics-tools.md)
+* [Watch real robot and system demonstrations](../resource-library/watch-and-learn.md)
+
+Use official sources for electrical and safety requirements; use the checklists below to guide your team's own review.
+
+***
+
 Electrical, mechanical, and software systems fail at their interfaces. This section helps teams make those interfaces explicit and test them safely.
 
 ## Think in interfaces
